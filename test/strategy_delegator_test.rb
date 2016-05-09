@@ -1,0 +1,82 @@
+require "test_helper"
+require "ocawari/strategy_delegator"
+require "ocawari/strategy/no_match"
+
+class StrategyDelegatorTest < Minitest::Test
+  def test_it_handles_ameblo_posts
+    url = "http://ameblo.jp/pidl-nagoya/entry-12157434206.html"
+    strategy = Ocawari::StrategyDelegator.identify(url)
+
+    assert_equal Ocawari::Strategy::Ameblo, strategy
+  end
+
+  def test_it_handles_google_plus_posts
+    url = "https://plus.google.com/105835152133357364264/posts/DnCtSqZEkSh"
+    strategy = Ocawari::StrategyDelegator.identify(url)
+
+    assert_equal Ocawari::Strategy::GooglePlus, strategy
+  end
+
+  def test_it_handles_instagram_posts
+    url = "https://www.instagram.com/p/BFAY_eWGWfB"
+    strategy = Ocawari::StrategyDelegator.identify(url)
+
+    assert_equal Ocawari::Strategy::Instagram, strategy
+  end
+
+  def test_it_handles_line_posts
+    url = "http://lineblog.me/kimuramisa/archives/5858555.html"
+    strategy = Ocawari::StrategyDelegator.identify(url)
+    
+    assert_equal Ocawari::Strategy::Line, strategy
+  end
+
+  def test_it_handles_nanagogo_posts
+    url = "https://7gogo.jp/kizaki-yuria/4095"
+    strategy = Ocawari::StrategyDelegator.identify(url)
+    
+    assert_equal Ocawari::Strategy::NanaGoGo, strategy
+  end
+
+  def test_it_handles_smartflash_posts
+    url = "http://smart-flash.jp/entame/idol/7288"
+    strategy = Ocawari::StrategyDelegator.identify(url)
+    
+    assert_equal Ocawari::Strategy::SmartFlash, strategy
+  end
+
+  def test_it_handles_tokyo_idol_net_posts
+    url = "http://www.tokyoidol.net/?p=4848"
+    strategy = Ocawari::StrategyDelegator.identify(url)
+    
+    assert_equal Ocawari::Strategy::TokyoIdolNet, strategy
+  end
+
+  def test_it_handles_tumblr_posts_without_tumblr_in_url
+    url = "http://www.voz48.xyz/post/143373333526/young-magazine-no21-22-2016"
+    strategy = Ocawari::StrategyDelegator.identify(url)
+
+    assert_equal Ocawari::Strategy::Tumblr, strategy
+  end
+
+  def test_it_handles_tumblr_posts_with_tumblr_in_url
+    url = "http://tokyo-akb48.tumblr.com/post/140480736666"
+    strategy = Ocawari::StrategyDelegator.identify(url)
+
+    assert_equal Ocawari::Strategy::Tumblr, strategy
+  end
+
+  def test_it_handles_twitter_posts
+    url = "https://twitter.com/Kotone_LTS/status/728252241270857728"
+    strategy = Ocawari::StrategyDelegator.identify(url)
+
+    assert_equal Ocawari::Strategy::Twitter, strategy
+  end
+
+  def test_it_returns_no_match_strategy_if_strategy_matches_found
+    url = "https://twitter.com"
+    strategy = Ocawari::StrategyDelegator.identify(url)
+    
+    assert_equal Ocawari::Strategy::NoMatch, strategy
+  end
+end
