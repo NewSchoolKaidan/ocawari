@@ -8,10 +8,14 @@ module Ocawari
 
       user_id = url[/(\d+)/, 1]
       album_id = album_href[/albums\/(\d+)/, 1]
+      picasa_url = %W(
+        https://picasaweb.google.com
+        data/feed/api
+        user/#{user_id}
+        albumid/#{album_id}
+      ).join("/")
 
-      picasa = Oga.parse_xml(
-        open("https://picasaweb.google.com/data/feed/api/user/#{user_id}/albumid/#{album_id}")
-      )
+      picasa = Oga.parse_xml(open(picasa_url))
 
       content_nodes = picasa.xpath("//entry/content")
 
