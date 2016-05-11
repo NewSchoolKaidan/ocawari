@@ -29,9 +29,9 @@ module Ocawari
       lower_resolution = /(250|400|540|500)\.jpg/
       image_urls.map do |url|
         if url =~ lower_resolution
-          url.sub(lower_resolution, "1280.jpg")
+          url.sub(lower_resolution, "1280.jpg").strip
         else
-          url
+          url.strip
         end
       end
     end

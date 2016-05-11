@@ -66,6 +66,14 @@ class StrategyDelegatorTest < Minitest::Test
     assert_equal Ocawari::Strategy::Tumblr, strategy
   end
 
+  def test_it_handles_tumblr_hosted_blog
+    # goddamit voz48
+    url = "http://www.i.voz48.xyz/post/144125258480/young-champion-no11-2016"
+    strategy = Ocawari::StrategyDelegator.identify(url)
+
+    assert_equal Ocawari::Strategy::Tumblr, strategy
+  end
+
   def test_it_handles_twitter_posts
     url = "https://twitter.com/Kotone_LTS/status/728252241270857728"
     strategy = Ocawari::StrategyDelegator.identify(url)

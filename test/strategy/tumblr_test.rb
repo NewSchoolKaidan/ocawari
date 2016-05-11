@@ -83,4 +83,13 @@ class TumblrStrategyTest < Minitest::Test
       assert images.all? { |url| url.include?("1280.jpg") }
     end
   end
+
+  def test_no_empty_spaces
+    VCR.use_cassette "tumblr/hkt-sakura-young-champion-no11-2016" do
+      url = "http://www.i.voz48.xyz/post/144125258480/young-champion-no11-2016"
+      images = Ocawari::Strategy::Tumblr.(url)
+
+      refute images.any? { |url| url.match(/[\s\n\t]/) }, "Images should not contain any empty spaces, newlines, etc."
+    end
+  end
 end

@@ -18,7 +18,8 @@ module Ocawari
       /7gogo\.jp\/[\W\w]+\/\d+/ => "NanaGoGo",
       /smart-flash\.jp\/\w+(\/\w+)?\/\d+/ => "SmartFlash",
       /tokyoidol\.net\/\?p=\d+/ => "TokyoIdolNet",
-      /(\.tumblr\.com)?\/post\/\d+\/?/ => "Tumblr",
+      /tumblr\.com\/post\/\d+\/?/ => "Tumblr",
+      /voz48\.xyz\/post\/\d{1,}\/.*/ => "Tumblr",
       /\/\/twitter\.com\/\w+\/status\/\d{1,}/ => "Twitter"
     }
 

@@ -40,8 +40,9 @@ module Ocawari
       collected_images.compact.sort
 
     elsif args.is_a?(String)
-      strategy = StrategyDelegator.identify(URI.encode(args))
-      strategy.(args)
+      encoded_url = URI.encode(args)
+      strategy = StrategyDelegator.identify(URI.encode(encoded_url))
+      strategy.(encoded_url)
     else
       raise StandardError
     end
