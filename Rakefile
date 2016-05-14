@@ -3,7 +3,7 @@ require "rake/testtask"
 require "pry"
 
 task :console do
-  exec "irb -r ocawari -I ./lib"
+  exec "bin/console"
 end
 
 Rake::TestTask.new(:test) do |t|
