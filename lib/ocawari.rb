@@ -14,12 +14,10 @@ module Ocawari
       collected_images = []
 
       strategies = args.map do |url|
-        encoded_url = URI.encode(url)
-        [
-          StrategyDelegator.identify(encoded_url), 
-          encoded_url
-        ]
+        encoded_url = URI.encode(prefix_url(url))
+        [ StrategyDelegator.identify(encoded_url), encoded_url ]
       end
+
       strategies.each { |strategy_set| work_queue.push strategy_set }
 
       workers = (0..4).map do
@@ -40,11 +38,22 @@ module Ocawari
       collected_images.compact.sort
 
     elsif args.is_a?(String)
-      encoded_url = URI.encode(args)
+      encoded_url = URI.encode(prefix_url(args))
       strategy = StrategyDelegator.identify(URI.encode(encoded_url))
       strategy.(encoded_url)
     else
       raise StandardError
+    end
+  end
+
+  private
+
+  def self.prefix_url(url)
+    u = URI.parse(url)
+    if u.scheme.nil?
+      "http://#{url}"
+    else
+      url
     end
   end
 end
