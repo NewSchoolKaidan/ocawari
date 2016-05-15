@@ -9,7 +9,7 @@ require "ocawari/strategy_delegator"
 module Ocawari
   def self.parse(args)
     if args.is_a?(Array)
-      worker_queue = Queue.new
+      work_queue = Queue.new
       mutex = Mutex.new
       collected_images = []
 
@@ -20,12 +20,12 @@ module Ocawari
           encoded_url
         ]
       end
-      strategies.each { |strategy_set| worker_queue.push strategy_set }
+      strategies.each { |strategy_set| work_queue.push strategy_set }
 
       workers = (0..4).map do
         Thread.new do
           begin
-            while set = worker_queue.pop(true)
+            while set = work_queue.pop(true)
               strategy, url = set
               images = strategy.(url)
               mutex.lock

@@ -1,4 +1,52 @@
 #!/usr/bin/env ruby
 
+require "methadone"
 require "ocawari"
+require "pry"
 
+include Methadone::Main
+include Methadone::CLILogging
+
+main do
+  if file = options.fetch(:input, false)
+    inputfile_post_urls = File.readlines(file).map(&:strip)
+  else
+    inputfile_post_urls = []
+  end
+
+  images = Ocawari.parse(inputfile_post_urls + ARGV)
+
+  if options.fetch(:download, false)
+    download_images(images)
+    puts "Images have finished downloading"
+  else
+    images.each { |url| puts url }
+  end
+end
+
+def download_images(images)
+  work_queue = Queue.new
+  images.each { |url| work_queue << url }
+  workers = (0..4).map do
+    Thread.new do
+      begin
+        while url = work_queue.pop(true)
+          filename = url.split("/").last
+          File.open(filename, "wb") do |f|
+            image = open(url)
+            f.write(image.read)
+          end
+        end
+      rescue ThreadError
+      end
+    end
+  end.map(&:join)
+end
+
+on("-d", "--download", "Downloads each image that is sent to STDOUT via Ocawari after fetching the image urls")
+on("-i INPUT", "--input", "Add a file which contains a list of urls with a single url on each line")
+
+description "Ocawari CLI which outputs the images posted by your favorite idols to STDOUT"
+version Ocawari::VERSION
+
+go!
