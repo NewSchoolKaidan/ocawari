@@ -1,6 +1,6 @@
 require "oga"
-require "open-uri"
 require "uri"
+require "open-uri"
 require "thread"
 
 require "ocawari/version"
@@ -14,8 +14,8 @@ module Ocawari
       collected_images = []
 
       strategies = args.map do |url|
-        encoded_url = URI.encode(prefix_url(url))
-        [ StrategyDelegator.identify(encoded_url), encoded_url ]
+        uri = prepare_uri(url)
+        [ StrategyDelegator.identify(uri.to_s), uri ]
       end
 
       strategies.each { |strategy_set| work_queue.push strategy_set }
@@ -24,8 +24,8 @@ module Ocawari
         Thread.new do
           begin
             while set = work_queue.pop(true)
-              strategy, url = set
-              images = strategy.(url)
+              strategy, uri = set
+              images = strategy.(uri)
               mutex.lock
               collected_images += images
               mutex.unlock
@@ -38,9 +38,9 @@ module Ocawari
       collected_images.compact.sort
 
     elsif args.is_a?(String)
-      encoded_url = URI.encode(prefix_url(args))
-      strategy = StrategyDelegator.identify(URI.encode(encoded_url))
-      strategy.(encoded_url)
+      uri = prepare_uri(args)
+      strategy = StrategyDelegator.identify(uri.to_s)
+      strategy.(uri)
     else
       raise StandardError
     end
@@ -48,12 +48,12 @@ module Ocawari
 
   private
 
-  def self.prefix_url(url)
-    u = URI.parse(url)
+  def self.prepare_uri(url)
+    u = URI(url)
     if u.scheme.nil?
-      "http://#{url}"
+      u.tap { |this| this.scheme = "http" }
     else
-      url
+      u
     end
   end
 end

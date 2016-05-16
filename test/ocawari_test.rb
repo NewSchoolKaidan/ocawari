@@ -32,7 +32,7 @@ class OcawariTest < Minitest::Test
         https://twitter.com/gen_SQ27/status/728817073342849024
         https://twitter.com/gen_SQ27/status/728815045136678912
         https://twitter.com/Hitomi_hiychan/status/728807006920794112
-        https://twitter.com/nyoki_n/status/728814801997037568 
+        https://twitter.com/nyoki_n/status/728814801997037568
         https://twitter.com/honda49892000/status/728800724235079680
         https://twitter.com/nyoki_n/status/728808506250297344
       )
@@ -53,7 +53,7 @@ class OcawariTest < Minitest::Test
         https://twitter.com/gen_SQ27/status/728817073342849024
         https://twitter.com/gen_SQ27/status/728815045136678912
         https://twitter.com/Hitomi_hiychan/status/728807006920794112
-        https://twitter.com/nyoki_n/status/728814801997037568 
+        https://twitter.com/nyoki_n/status/728814801997037568
         https://twitter.com/honda49892000/status/728800724235079680
         https://twitter.com/nyoki_n/status/728808506250297344
       )

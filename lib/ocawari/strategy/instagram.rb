@@ -1,11 +1,11 @@
 module Ocawari
   module Strategy
-    Instagram = lambda do |url|
-      if url =~ /\?taken-by=/
-        scrubbed_url = url.sub(/\/\?taken-by=.*/, "")
-        page = Oga.parse_html(open(scrubbed_url))
+    Instagram = lambda do |uri|
+      if uri.path =~ /\?taken-by=/
+        uri.path = uri.path.sub(/\/\?taken-by=.*/, "")
+        page = Oga.parse_html(uri.open.read)
       else
-        page = Oga.parse_html(open(url))
+        page = Oga.parse_html(uri.open.read)
       end
 
       meta_node_with_image = page.at_css("meta[property='og:image']")

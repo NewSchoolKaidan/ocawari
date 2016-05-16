@@ -1,7 +1,7 @@
 module Ocawari
   module Strategy
-    Line = lambda do |url|
-      page = Oga.parse_html(open(url))
+    Line = lambda do |uri|
+      page = Oga.parse_html(uri.open.read)
       
       css_selector_hierarcy = %w(
         div.article-body

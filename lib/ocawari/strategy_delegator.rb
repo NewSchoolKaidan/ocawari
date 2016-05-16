@@ -1,5 +1,6 @@
 require "ocawari/strategy/ameblo"
 require "ocawari/strategy/google_plus"
+require "ocawari/strategy/instagram"
 require "ocawari/strategy/line"
 require "ocawari/strategy/nana_go_go"
 require "ocawari/strategy/smart_flash"
@@ -20,7 +21,7 @@ module Ocawari
       /tokyoidol\.net\/\?p=\d+/ => "TokyoIdolNet",
       /tumblr\.com\/post\/\d+\/?/ => "Tumblr",
       /voz48\.xyz\/post\/\d{1,}\/.*/ => "Tumblr",
-      /\/\/twitter\.com\/\w+\/status\/\d{1,}/ => "Twitter"
+      /twitter\.com\/\w+\/status\/\d{1,}/ => "Twitter"
     }
 
     def self.identify(url)

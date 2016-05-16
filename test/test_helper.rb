@@ -6,6 +6,7 @@ require "minitest/reporters"
 require "vcr"
 require 'webmock/minitest'
 require "pry"
+require "uri"
 
 Minitest::Reporters.use! [Minitest::Reporters::DefaultReporter.new({color: true})]
 

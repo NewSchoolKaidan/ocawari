@@ -1,7 +1,7 @@
 module Ocawari
   module Strategy
-    Twitter = lambda do |url|
-      page = Oga.parse_html(open(url))
+    Twitter = lambda do |uri|
+      page = Oga.parse_html(uri.open.read)
       css_selector_hierarchy = %w(
         div.permalink-tweet-container
         div.tweet

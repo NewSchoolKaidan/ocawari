@@ -1,6 +1,6 @@
 module Ocawari
   module Strategy
-    NoMatch = lambda do |url|
+    NoMatch = lambda do |uri|
       []
     end
   end

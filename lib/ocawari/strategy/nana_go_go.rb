@@ -1,7 +1,7 @@
 module Ocawari
   module Strategy
-    NanaGoGo = lambda do |url|
-      page = Oga.parse_html(open(url))
+    NanaGoGo = lambda do |uri|
+      page = Oga.parse_html(uri.open.read)
       page.
         css("div.TalkPostDetail__media img").
         map do |img|

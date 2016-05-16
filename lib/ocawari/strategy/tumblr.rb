@@ -1,15 +1,22 @@
 module Ocawari
   module Strategy
-    Tumblr = lambda do |url|
-      page = Oga.parse_html(open(url))
+    Tumblr = lambda do |uri|
+      page = Oga.parse_html(uri.open.read)
+
       image_filter_expression = /\d_(250|400|500|540|1280)\.jpg$/
 
-      target_images = page.css("img").select do |img|
-        img.get("src") =~ image_filter_expression
+      if page.to_xml =~ /BEGIN TUMBLR FACEBOOK OPENGRAPH TAGS/
+        target_images = page.css("meta[property='og:image']")
+      else
+        target_images = page.css("img").select do |img|
+          img.get("src") =~ image_filter_expression
+        end
       end
 
       if target_images.any?
-        image_urls = target_images.map { |img| img.get("src") }
+        image_urls = target_images.flat_map do |node|
+          [node.get("content"), node.get("src")]
+        end.compact
       else
         iframe = page.css("iframe").find do |iframe|
           iframe.attributes.map(&:value).any? do |value|
