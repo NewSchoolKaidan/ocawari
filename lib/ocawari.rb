@@ -17,16 +17,19 @@ module Ocawari
       strategies = args.map do |url|
         uri = prepare_uri(url)
         strategy = StrategyDelegator.identify(uri.to_s)
-        strategy.new(uri)
+        [ strategy, uri ]
       end
 
-      strategies.each { |strategy| work_queue << strategy }
+      strategies.each { |taskset| work_queue << taskset }
 
       workers = (0..4).map do
         Thread.new do
           begin
-            while task = work_queue.pop(true)
+            while taskset = work_queue.pop(true)
+              strategy, uri = taskset
+              task = strategy.new(uri)
               images = task.execute
+
               mutex.lock
               collected_images += images
               mutex.unlock
