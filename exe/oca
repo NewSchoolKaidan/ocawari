@@ -2,7 +2,6 @@
 
 require "methadone"
 require "ocawari"
-require "pry"
 
 include Methadone::Main
 include Methadone::CLILogging
