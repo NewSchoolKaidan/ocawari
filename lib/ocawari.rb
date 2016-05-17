@@ -4,6 +4,7 @@ require "open-uri"
 require "thread"
 
 require "ocawari/version"
+require "ocawari/parser"
 require "ocawari/strategy_delegator"
 
 module Ocawari
@@ -15,17 +16,17 @@ module Ocawari
 
       strategies = args.map do |url|
         uri = prepare_uri(url)
-        [ StrategyDelegator.identify(uri.to_s), uri ]
+        strategy = StrategyDelegator.identify(uri.to_s)
+        strategy.new(uri)
       end
 
-      strategies.each { |strategy_set| work_queue.push strategy_set }
+      strategies.each { |strategy| work_queue << strategy }
 
       workers = (0..4).map do
         Thread.new do
           begin
-            while set = work_queue.pop(true)
-              strategy, uri = set
-              images = strategy.(uri)
+            while task = work_queue.pop(true)
+              images = task.execute
               mutex.lock
               collected_images += images
               mutex.unlock
@@ -40,7 +41,7 @@ module Ocawari
     elsif args.is_a?(String)
       uri = prepare_uri(args)
       strategy = StrategyDelegator.identify(uri.to_s)
-      strategy.(uri)
+      strategy.new(uri).execute
     else
       raise StandardError
     end

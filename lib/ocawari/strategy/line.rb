@@ -1,20 +1,23 @@
 module Ocawari
   module Strategy
-    Line = lambda do |uri|
-      page = Oga.parse_html(uri.open.read)
-      
-      css_selector_hierarcy = %w(
+    class Line < Parser
+
+      private
+
+      CSS_SELECTOR_HIERARCHY = %w(
         div.article-body
         div.article-body-inner
         img.pict
       ).join(" ")
 
-      image_nodes = page.css(css_selector_hierarcy)
+      def parse
+        image_nodes = page.css(CSS_SELECTOR_HIERARCHY)
 
-      image_nodes.map do |img|
-        img.
-          get("src").
-          sub("-s.jpg", ".jpg")
+        image_nodes.map do |img|
+          img.
+            get("src").
+            sub("-s.jpg", ".jpg")
+        end
       end
     end
   end
