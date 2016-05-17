@@ -51,7 +51,7 @@ module Ocawari
   def self.prepare_uri(url)
     u = URI(url)
     if u.scheme.nil?
-      u.tap { |this| this.scheme = "http" }
+      URI("http://#{u.to_s}")
     else
       u
     end

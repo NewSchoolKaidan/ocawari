@@ -67,4 +67,13 @@ class OcawariTest < Minitest::Test
       assert images_are_all_strings
     end
   end
+
+  def test_prefix_url_if_http_scheme_is_missing_from_url
+    VCR.use_cassette "ameblo/kusunoki-mayu-entry-12160755427" do
+      url = "ameblo.jp/kusunoki-mayu/entry-12160755427.html"
+      images = Ocawari.parse(url)
+
+      assert 6, images.count
+    end
+  end
 end
