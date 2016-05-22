@@ -17,6 +17,13 @@ class StrategyDelegatorTest < Minitest::Test
     assert_equal Ocawari::Strategy::GooglePlus, strategy
   end
 
+  def test_it_handles_imgur_albums
+    url = "http://imgur.com/a/Xx5JN"
+    strategy = Ocawari::StrategyDelegator.identify(url)
+
+    assert_equal Ocawari::Strategy::Imgur, strategy
+  end
+
   def test_it_handles_instagram_posts
     url = "https://www.instagram.com/p/BFAY_eWGWfB"
     strategy = Ocawari::StrategyDelegator.identify(url)

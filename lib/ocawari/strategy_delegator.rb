@@ -1,5 +1,6 @@
 require "ocawari/strategy/ameblo"
 require "ocawari/strategy/google_plus"
+require "ocawari/strategy/imgur"
 require "ocawari/strategy/instagram"
 require "ocawari/strategy/line"
 require "ocawari/strategy/nana_go_go"
@@ -13,6 +14,7 @@ module Ocawari
   class StrategyDelegator
     STRATEGY_MAP = {
       /ameblo\.jp\/[\W\w]+\/entry-\d+\.html/ => "Ameblo",
+      /imgur\.com\/a\/.*/ => "Imgur",
       /instagram\.com\/p\/[\W\w]+/ => "Instagram",
       /plus\.google\.com\/\d+\/posts\/\w+/ => "GooglePlus",
       /lineblog\.me\/\w+\/archives\/\d+\.html/ => "Line",
