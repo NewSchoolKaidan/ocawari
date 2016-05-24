@@ -31,6 +31,13 @@ class StrategyDelegatorTest < Minitest::Test
     assert_equal Ocawari::Strategy::Instagram, strategy
   end
 
+  def test_it_handles_kaiyou_posts
+    url = "http://kai-you.net/article/28983"
+    strategy = Ocawari::StrategyDelegator.identify(url)
+
+    assert_equal Ocawari::Strategy::Kaiyou, strategy
+  end
+
   def test_it_handles_line_posts
     url = "http://lineblog.me/kimuramisa/archives/5858555.html"
     strategy = Ocawari::StrategyDelegator.identify(url)

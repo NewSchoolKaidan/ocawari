@@ -2,6 +2,7 @@ require "ocawari/strategy/ameblo"
 require "ocawari/strategy/google_plus"
 require "ocawari/strategy/imgur"
 require "ocawari/strategy/instagram"
+require "ocawari/strategy/kaiyou"
 require "ocawari/strategy/line"
 require "ocawari/strategy/nana_go_go"
 require "ocawari/strategy/smart_flash"
@@ -14,9 +15,10 @@ module Ocawari
   class StrategyDelegator
     STRATEGY_MAP = {
       /ameblo\.jp\/[\W\w]+\/entry-\d+\.html/ => "Ameblo",
+      /plus\.google\.com\/\d+\/posts\/\w+/ => "GooglePlus",
       /imgur\.com\/a\/.*/ => "Imgur",
       /instagram\.com\/p\/[\W\w]+/ => "Instagram",
-      /plus\.google\.com\/\d+\/posts\/\w+/ => "GooglePlus",
+      /kai-you\.net\/article\/\d+/ => "Kaiyou",
       /lineblog\.me\/\w+\/archives\/\d+\.html/ => "Line",
       /7gogo\.jp\/[\W\w]+\/\d+/ => "NanaGoGo",
       /smart-flash\.jp\/\w+(\/\w+)?\/\d+/ => "SmartFlash",
