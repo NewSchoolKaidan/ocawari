@@ -35,7 +35,7 @@ module Ocawari
 
           @page = Oga.parse_html(open(iframe.get("src")))
           target_images = page.css("img").select do |img|
-            img.get("src") =~ image_filter_expression
+            img.get("src") =~ IMAGE_FILTER_EXPRESSION
           end
 
           image_urls = target_images.map { |img| img.get("src") }

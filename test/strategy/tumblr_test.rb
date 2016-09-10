@@ -140,11 +140,21 @@ class TumblrStrategyTest < Minitest::Test
     VCR.use_cassette "tumblr/no-iframes-with-photosets" do
       uri = URI("http://all4jp.tumblr.com/post/149498455647/%E5%A4%A7%E5%A0%B4%E7%BE%8E%E5%A5%88-%E6%97%A9%E4%B9%99%E5%A5%B3%E3%82%86%E3%81%86-%E6%B5%85%E5%B7%9D%E6%A2%A8%E5%A5%88-%E7%A8%B2%E6%9D%91%E4%BA%9C%E7%BE%8E-%E4%BD%90%E8%97%A4%E9%BA%97%E5%A5%88-%E6%9C%AC%E9%83%B7%E6%9D%8F%E5%A5%88-%E6%9D%BE%E6%9C%AC%E6%84%9B-young-animal")
 
-
       strategy = Ocawari::Strategy::Tumblr.new(uri)
       images = strategy.execute
 
       assert_equal [], images
+    end
+  end
+
+  def test_make_sure_that_image_filter_expression_constant_is_used
+    VCR.use_cassette "tumblr/ensure-image-filter-expression-constant-is-used" do
+      uri = URI("http://hidemarotgs.tumblr.com/post/139226642007/%E8%A6%8B%E3%81%A6%E3%81%AA%E3%81%81%E3%81%BD%E3%82%93%E3%81%95%E3%82%93%E3%81%A8%E8%A1%A3%E8%A3%85%E4%BA%A4%E6%8F%9B%E3%81%97%E3%81%A1%E3%82%83%E3%81%A3%E3%81%9F%E3%81%AE")
+
+      strategy = Ocawari::Strategy::Tumblr.new(uri)
+      images = strategy.execute
+
+      assert_equal 4, images.count
     end
   end
 end
