@@ -6,7 +6,7 @@ class OcawariTest < Minitest::Test
     refute_nil ::Ocawari::VERSION
   end
 
-  def test_returns_an_array_given_a_string_argument
+  def test_returns_an_array_given_a_string_argument 
     VCR.use_cassette "twitter/festive-kotton4" do 
       image_urls = Ocawari.parse("https://twitter.com/Kotone_LTS/status/728252241270857728")
 
@@ -73,7 +73,30 @@ class OcawariTest < Minitest::Test
       url = "ameblo.jp/kusunoki-mayu/entry-12160755427.html"
       images = Ocawari.parse(url)
 
-      assert 6, images.count
+      assert_equal 6, images.count
+    end
+  end
+  
+  def test_normalizes_non_ascii_urls
+    VCR.use_cassette "tumblr/asakawa-nana-2016-weekly-young-magazine-no-18"  do
+      url = "http://unknown634.tumblr.com/post/142237853450/浅川梨奈-wym2016-no18"
+
+      images = Ocawari.parse(url)
+
+      assert_equal 7, images.count
+    end
+  end
+
+  def test_normalizes_multiple_non_ascii_urls
+    VCR.use_cassette "normalizes_multiple_non_ascii_urls" do
+      urls = %w(
+        http://yoimachi.tumblr.com/post/134769414906/浅川梨奈
+        http://tsuna1223.tumblr.com/post/140068454897/浅川梨奈のtumblrで見つけた水着や制服姿の画像がすごすぎる件-httptsuna-kyo
+      )
+
+      images = Ocawari.parse(urls)
+
+      assert_equal 9, images.count
     end
   end
 end

@@ -1,7 +1,7 @@
 class Parser
   def initialize(uri)
     @uri = uri
-    @page = Oga.parse_html(uri.open.read)
+    @page = Oga.parse_html(open(uri).read)
   rescue OpenURI::HTTPError
     @page = nil
   end
