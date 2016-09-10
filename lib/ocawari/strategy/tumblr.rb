@@ -5,10 +5,14 @@ module Ocawari
       private
       
       IMAGE_FILTER_EXPRESSION = /\d_(250|400|500|540|1280)\.jpg$/
-      LOWER_RESOLUTION = /(250|400|540|500)\.jpg/
+      LOWER_RESOLUTION = /(250|400|540|500)\.(jpg|png)/
+      OPENGRAPH_COMMENTS = [
+        "BEGIN TUMBLR FACEBOOK OPENGRAPH TAGS",
+        "FACEBOOK OPEN GRAPH"
+      ]
 
       def parse
-        if page.to_xml =~ /BEGIN TUMBLR FACEBOOK OPENGRAPH TAGS/
+        if page.to_xml =~ /(#{OPENGRAPH_COMMENTS.join("|")})/
           target_images = page.css("meta[property='og:image']")
         else
           target_images = page.css("img").select do |img|
@@ -38,7 +42,10 @@ module Ocawari
 
         image_urls.map do |url|
           if url =~ LOWER_RESOLUTION
-            url.sub(LOWER_RESOLUTION, "1280.jpg").strip
+            url.sub(
+              LOWER_RESOLUTION, 
+              "1280#{File.extname(url)}"
+            ).strip
           else
             url.strip
           end

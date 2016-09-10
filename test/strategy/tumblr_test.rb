@@ -109,7 +109,30 @@ class TumblrStrategyTest < Minitest::Test
       strategy = Ocawari::Strategy::Tumblr.new(uri)
       images = strategy.execute
 
-      assert 8, images.count
+      assert_equal 8, images.count
+    end
+  end
+
+  def test_looks_for_images_with_different_meta_comments
+    VCR.use_cassette "tumblr/asakawa-nana-2016-young-magazine-issue-36-ebook" do
+      uri = URI("https://sug-bug.tumblr.com/post/148542905592/amazoncojp-%E3%83%A4%E3%83%B3%E3%82%B0%E3%83%9E%E3%82%AC%E3%82%B8%E3%83%B3-2016%E5%B9%B426%E5%8F%B7-2016%E5%B9%B45%E6%9C%8830%E6%97%A5%E7%99%BA%E5%A3%B2-%E9%9B%91%E8%AA%8C")
+
+      strategy = Ocawari::Strategy::Tumblr.new(uri)
+      images = strategy.execute
+
+      assert_equal 1, images.count
+    end
+  end
+
+  def test_get_highest_resolution_png
+    VCR.use_cassette "tumblr/asakawa-nana-2016-young-magazine-issue-36-ebook" do
+      uri = URI("https://sug-bug.tumblr.com/post/148542905592/amazoncojp-%E3%83%A4%E3%83%B3%E3%82%B0%E3%83%9E%E3%82%AC%E3%82%B8%E3%83%B3-2016%E5%B9%B426%E5%8F%B7-2016%E5%B9%B45%E6%9C%8830%E6%97%A5%E7%99%BA%E5%A3%B2-%E9%9B%91%E8%AA%8C")
+
+      strategy = Ocawari::Strategy::Tumblr.new(uri)
+      images = strategy.execute
+      image = images.first
+
+      assert image.include?("1280.png")
     end
   end
 end
