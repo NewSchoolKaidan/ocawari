@@ -31,6 +31,8 @@ module Ocawari
             end
           end
 
+          return [] unless iframe
+
           @page = Oga.parse_html(open(iframe.get("src")))
           target_images = page.css("img").select do |img|
             img.get("src") =~ image_filter_expression

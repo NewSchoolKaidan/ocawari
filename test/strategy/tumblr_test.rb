@@ -135,4 +135,16 @@ class TumblrStrategyTest < Minitest::Test
       assert image.include?("1280.png")
     end
   end
+
+  def test_return_if_theres_no_iframes_with_photosets_in_tumblr_post
+    VCR.use_cassette "tumblr/no-iframes-with-photosets" do
+      uri = URI("http://all4jp.tumblr.com/post/149498455647/%E5%A4%A7%E5%A0%B4%E7%BE%8E%E5%A5%88-%E6%97%A9%E4%B9%99%E5%A5%B3%E3%82%86%E3%81%86-%E6%B5%85%E5%B7%9D%E6%A2%A8%E5%A5%88-%E7%A8%B2%E6%9D%91%E4%BA%9C%E7%BE%8E-%E4%BD%90%E8%97%A4%E9%BA%97%E5%A5%88-%E6%9C%AC%E9%83%B7%E6%9D%8F%E5%A5%88-%E6%9D%BE%E6%9C%AC%E6%84%9B-young-animal")
+
+
+      strategy = Ocawari::Strategy::Tumblr.new(uri)
+      images = strategy.execute
+
+      assert_equal [], images
+    end
+  end
 end
