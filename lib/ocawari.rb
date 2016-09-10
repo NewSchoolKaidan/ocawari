@@ -16,7 +16,6 @@ module Ocawari
 
       strategies = args.map do |url|
         uri = prepare_uri(url)
-        uri.normalize!
         strategy = StrategyDelegator.identify(uri.to_s)
         [ strategy, uri ]
       end
@@ -44,7 +43,6 @@ module Ocawari
 
     elsif args.is_a?(String)
       uri = prepare_uri(args)
-      uri.normalize!
       strategy = StrategyDelegator.identify(uri.to_s)
       strategy.new(uri).execute
     else
@@ -57,9 +55,9 @@ module Ocawari
   def self.prepare_uri(url)
     u = Addressable::URI.parse(url)
     if u.scheme.nil?
-      Addressable::URI.parse("http://#{u.to_s}")
+      Addressable::URI.parse("http://#{u.to_s}").normalize
     else
-      u
+      u.normalize
     end
   end
 end
