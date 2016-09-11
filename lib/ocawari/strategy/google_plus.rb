@@ -19,7 +19,9 @@ module Ocawari
           albumid/#{album_id}
         ).join("/")
 
-        picasa = Oga.parse_xml(URI(picasa_url).open.read)
+        picasa = Oga.parse_xml(
+          open(Addressable::URI.parse(picasa_url)).read
+        )
 
         content_nodes = picasa.xpath("//entry/content")
 

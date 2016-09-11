@@ -14,9 +14,8 @@ module Ocawari
         image_nodes = page.css(CSS_SELECTOR_HIERARCHY)
 
         image_nodes.map do |img|
-          img.
-            get("src").
-            sub("-s.jpg", ".jpg")
+          imgname = img.get("src")
+          imgname.sub("-s.", "#{File.extname(imgname)}")
         end
       end
     end

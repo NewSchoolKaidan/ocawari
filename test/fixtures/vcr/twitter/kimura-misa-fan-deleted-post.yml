@@ -32,26 +32,26 @@ http_interactions:
       Content-Type:
       - text/html;charset=utf-8
       Date:
-      - Sat, 10 Sep 2016 04:10:29 GMT
+      - Sun, 11 Sep 2016 22:57:04 GMT
       Server:
       - tsa_b
       Set-Cookie:
-      - guest_id=v1%3A147348062990467942; Domain=.twitter.com; Path=/; Expires=Mon,
-        10-Sep-2018 04:10:29 UTC
+      - guest_id=v1%3A147363462443554493; Domain=.twitter.com; Path=/; Expires=Tue,
+        11-Sep-2018 22:57:04 UTC
       Status:
       - 404 Not Found
       Strict-Transport-Security:
       - max-age=631138519
       X-Connection-Hash:
-      - 10454eb1c5db34cd0e692e7a7b7cca65
+      - 36927f84e811be491bec46e74b115727
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
       - SAMEORIGIN
       X-Response-Time:
-      - '6'
+      - '5'
       X-Transaction:
-      - 006b3a5c00e6c73a
+      - 00ef9fa900842d6a
       X-Xss-Protection:
       - 1; mode=block
     body:
@@ -158,5 +158,5 @@ http_interactions:
         MWJiNjEyMDdmZGYwM2E5LmpzIj48L3NjcmlwdD4KICA8L2JvZHk+CjwvaHRt
         bD4K
     http_version: 
-  recorded_at: Sat, 10 Sep 2016 04:10:29 GMT
-recorded_with: VCR 3.0.1
+  recorded_at: Sun, 11 Sep 2016 22:57:04 GMT
+recorded_with: VCR 3.0.3

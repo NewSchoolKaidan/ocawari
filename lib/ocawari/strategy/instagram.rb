@@ -4,9 +4,9 @@ module Ocawari
       def initialize(uri)
         if uri.path =~ /\?taken-by=/
           uri.path = uri.path.sub(/\/\?taken-by=.*/, "")
-          @page = Oga.parse_html(uri.open.read)
+          @page = Oga.parse_html(open(uri).read)
         else
-          @page = Oga.parse_html(uri.open.read)
+          @page = Oga.parse_html(open(uri).read)
         end
       rescue OpenURI::HTTPError
         @page = nil

@@ -4,7 +4,7 @@ require "ocawari/strategy/line"
 class LineStrategyTest < Minitest::Test
   def test_returns_array
     VCR.use_cassette "line/kimura-misa-5" do
-      uri = URI("http://lineblog.me/kimuramisa/archives/5950658.html")
+      uri = Addressable::URI.parse("http://lineblog.me/kimuramisa/archives/5950658.html")
       strategy = Ocawari::Strategy::Line.new(uri)
       images = strategy.execute
 
@@ -14,7 +14,7 @@ class LineStrategyTest < Minitest::Test
 
   def test_returns_expected_amount_of_images
     VCR.use_cassette "line/kimura-misa-5" do
-      uri = URI("http://lineblog.me/kimuramisa/archives/5950658.html")
+      uri = Addressable::URI.parse("http://lineblog.me/kimuramisa/archives/5950658.html")
       strategy = Ocawari::Strategy::Line.new(uri)
       images = strategy.execute
 
@@ -24,7 +24,7 @@ class LineStrategyTest < Minitest::Test
 
   def test_returns_images_at_max_resolution
     VCR.use_cassette "line/kimura-misa-5" do
-      uri = URI("http://lineblog.me/kimuramisa/archives/5950658.html")
+      uri = Addressable::URI.parse("http://lineblog.me/kimuramisa/archives/5950658.html")
       strategy = Ocawari::Strategy::Line.new(uri)
       images = strategy.execute
 

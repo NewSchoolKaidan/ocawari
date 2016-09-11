@@ -3,7 +3,7 @@ require "ocawari/strategy/kaiyou"
 
 class KaiyouTest < Minitest::Test
   def setup
-    @uri = URI("http://kai-you.net/article/28983")
+    @uri = Addressable::URI.parse("http://kai-you.net/article/28983")
   end
 
   def test_returns_array
