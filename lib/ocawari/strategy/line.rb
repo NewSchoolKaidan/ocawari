@@ -15,7 +15,7 @@ module Ocawari
 
         image_nodes.map do |img|
           imgname = img.get("src")
-          imgname.sub("-s.", "#{File.extname(imgname)}")
+          imgname.sub("-s.", ".")
         end
       end
     end

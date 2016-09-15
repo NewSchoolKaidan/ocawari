@@ -28,8 +28,10 @@ class LineStrategyTest < Minitest::Test
       strategy = Ocawari::Strategy::Line.new(uri)
       images = strategy.execute
 
-      all_images_at_max_resolution = 
-        images.all? { |url| !url.include?("-s.jpg") }
+      all_images_at_max_resolution = images.all? do |url|
+        !url.include?("-s.") &&
+        !!(url =~ /\.(jpg|JPEG|jpeg|png|gif)$/)
+      end
 
       assert all_images_at_max_resolution
     end
