@@ -9,7 +9,8 @@ require "ocawari/strategy_delegator"
 
 module Ocawari
   def self.parse(args)
-    if args.is_a?(Array)
+    case args
+    when Array
       work_queue = Queue.new
       mutex = Mutex.new
       collected_images = []
@@ -40,8 +41,7 @@ module Ocawari
       end.map(&:join)
 
       collected_images.compact.sort
-
-    elsif args.is_a?(String)
+    when String
       uri = prepare_uri(args)
       strategy = StrategyDelegator.identify(uri.to_s)
       strategy.new(uri).execute
