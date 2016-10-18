@@ -31,4 +31,28 @@ class AmebloStrategyTest < Minitest::Test
       assert_equal 7, images.count
     end
   end
+
+  def test_ensures_max_resolution_images
+    VCR.use_cassette "ameblo/gojou-senon" do
+      uri = Addressable::URI.parse("http://ameblo.jp/satou525/entry-12210977663.html")
+      strategy = Ocawari::Strategy::Ameblo.new(uri)
+
+      images = strategy.execute
+
+      refute images.any? { |image| image =~ /t\d+_/ }
+      assert images.all? { |image| image.split("/").last[0] == "o" }
+    end
+  end
+
+  def test_scrubs_leading_metadata
+    VCR.use_cassette "ameblo/oonuki-sayaka"  do
+      uri = Addressable::URI.parse("http://ameblo.jp/ohnuki-sayaka/entry-12209753925.html")
+
+      strategy = Ocawari::Strategy::Ameblo.new(uri)
+
+      images = strategy.execute
+
+      refute images.any? { |image| image =~ /\?caw=800$/ }
+    end
+  end
 end
