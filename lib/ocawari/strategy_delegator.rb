@@ -4,6 +4,7 @@ require "ocawari/strategy/imgur"
 require "ocawari/strategy/instagram"
 require "ocawari/strategy/kaiyou"
 require "ocawari/strategy/line"
+require "ocawari/strategy/logirl"
 require "ocawari/strategy/nana_go_go"
 require "ocawari/strategy/smart_flash"
 require "ocawari/strategy/tokyo_idol_net"
@@ -20,6 +21,7 @@ module Ocawari
       /instagram\.com\/p\/[\W\w]+/ => "Instagram",
       /kai-you\.net\/article\/\d+/ => "Kaiyou",
       /lineblog\.me\/\w+\/archives\/\d+\.html/ => "Line",
+      /logirl\.favclip\.com\/article\/detail\/\d+/ => "Logirl",
       /7gogo\.jp\/[\W\w]+\/\d+/ => "NanaGoGo",
       /smart-flash\.jp\/\w+(\/\w+)?\/\d+/ => "SmartFlash",
       /tokyoidol\.net\/\?p=\d+/ => "TokyoIdolNet",

@@ -1,6 +1,7 @@
 require "oga"
 require "open-uri"
 require "addressable/uri"
+require "json"
 require "thread"
 
 require "ocawari/version"
