@@ -55,4 +55,16 @@ class AmebloStrategyTest < Minitest::Test
       refute images.any? { |image| image =~ /\?caw=800$/ }
     end
   end
+
+  def test_returns_images_for_uncommon_html_hierarchy
+    VCR.use_cassette "ameblo/matsui-sakiko" do
+      uri = Addressable::URI.parse("http://ameblo.jp/sakikomatsui1210/entry-12226963941.html")
+
+      strategy = Ocawari::Strategy::Ameblo.new(uri)
+
+      images = strategy.execute
+
+      assert images.any?, "The Ameblo strategy should return images for this page"
+    end
+  end
 end

@@ -4,8 +4,13 @@ module Ocawari
 
       private
 
+      CSS_HIERARCHY_SELECTORS = [
+        "article a.detailOn img",
+        "div.subContentsInner a.detailOn img"
+      ]
+
       def parse
-        image_nodes = page.css("article a.detailOn img")
+        image_nodes = page.css(CSS_HIERARCHY_SELECTORS.join(", "))
 
         image_nodes.map do |img|
           image_source = img.get("src")
