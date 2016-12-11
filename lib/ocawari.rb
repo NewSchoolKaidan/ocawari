@@ -41,7 +41,7 @@ module Ocawari
         end
       end.map(&:join)
 
-      collected_images.compact.sort
+      collected_images.compact
     when String
       uri = prepare_uri(args)
       strategy = StrategyDelegator.identify(uri.to_s)
