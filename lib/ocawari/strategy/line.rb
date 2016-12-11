@@ -15,7 +15,15 @@ module Ocawari
 
         image_nodes.map do |img|
           imgname = img.get("src")
-          imgname.sub("-s.", ".")
+
+          case imgname
+          when /-s\./
+            imgname.sub("-s.", ".")
+          when /\/small$/
+            imgname.sub("/small", "")
+          else
+            imgname
+          end
         end
       end
     end
