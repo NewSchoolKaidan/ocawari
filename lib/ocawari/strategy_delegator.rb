@@ -6,6 +6,7 @@ require "ocawari/strategy/kaiyou"
 require "ocawari/strategy/line"
 require "ocawari/strategy/logirl"
 require "ocawari/strategy/nana_go_go"
+require "ocawari/strategy/natalie"
 require "ocawari/strategy/smart_flash"
 require "ocawari/strategy/tokyo_idol_net"
 require "ocawari/strategy/tumblr"
@@ -23,6 +24,7 @@ module Ocawari
       /lineblog\.me\/\w+\/archives\/\d+\.html/ => "Line",
       /logirl\.favclip\.com\/article\/detail\/\d+/ => "Logirl",
       /7gogo\.jp\/[\W\w]+\/\d+/ => "NanaGoGo",
+      /natalie\.mu\/music\/news\/\d+/ => "Natalie",
       /smart-flash\.jp\/\w+(\/\w+)?\/\d+/ => "SmartFlash",
       /tokyoidol\.net\/\?p=\d+/ => "TokyoIdolNet",
       /tumblr\.com\/post\/\d+\/?/ => "Tumblr",

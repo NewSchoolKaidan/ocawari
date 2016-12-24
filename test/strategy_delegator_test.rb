@@ -59,12 +59,20 @@ class StrategyDelegatorTest < Minitest::Test
     assert_equal Ocawari::Strategy::NanaGoGo, strategy
   end
 
+  def test_it_handles_natalie_posts
+    url = "http://natalie.mu/music/news/213794"
+    strategy = Ocawari::StrategyDelegator.identify(url)
+    
+    assert_equal Ocawari::Strategy::Natalie, strategy
+  end
+
   def test_it_handles_smartflash_posts
     url = "http://smart-flash.jp/entame/idol/7288"
     strategy = Ocawari::StrategyDelegator.identify(url)
     
     assert_equal Ocawari::Strategy::SmartFlash, strategy
   end
+
 
   def test_it_handles_tokyo_idol_net_posts
     url = "http://www.tokyoidol.net/?p=4848"
