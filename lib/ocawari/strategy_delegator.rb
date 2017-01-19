@@ -3,6 +3,7 @@ require "ocawari/strategy/google_plus"
 require "ocawari/strategy/imgur"
 require "ocawari/strategy/instagram"
 require "ocawari/strategy/kaiyou"
+require "ocawari/strategy/keyakizaka46"
 require "ocawari/strategy/line"
 require "ocawari/strategy/logirl"
 require "ocawari/strategy/modelpress"
@@ -22,6 +23,7 @@ module Ocawari
       /imgur\.com\/a\/.*/ => "Imgur",
       /instagram\.com\/p\/[\W\w]+/ => "Instagram",
       /kai-you\.net\/article\/\d+/ => "Kaiyou",
+      /keyakizaka46\.com\/s\/k46o\/diary\/detail/ => "Keyakizaka46",
       /lineblog\.me\/\w+\/archives\/\d+\.html/ => "Line",
       /logirl\.favclip\.com\/article\/detail\/\d+/ => "Logirl",
       /mdpr\.jp\/news\/detail\/\d+/ => "ModelPress",
@@ -35,13 +37,23 @@ module Ocawari
     }
 
     def self.identify(url)
-      STRATEGY_MAP.each do |regex, strategy|
-        if url =~ regex
-          return Ocawari::Strategy.const_get(strategy)
+      if RUBY_VERSION >= "2.4.0"
+        STRATEGY_MAP.each do |regex, strategy|
+          if regex.match?(url)
+            return Ocawari::Strategy.const_get(strategy)
+          end
         end
+
+        Ocawari::Strategy::NoMatch
+      else
+        STRATEGY_MAP.each do |regex, strategy|
+          if url =~ regex
+            return Ocawari::Strategy.const_get(strategy)
+          end
+        end
+
+        Ocawari::Strategy::NoMatch
       end
-      
-      Ocawari::Strategy::NoMatch
     end
   end
 end

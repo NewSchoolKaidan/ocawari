@@ -17,7 +17,7 @@ class ParserTest < Minitest::Test
       url = "https://twitter.com/earth_JL/status/73204362104252825618k"
       base_parser = Parser.new(Addressable::URI.parse(url))
       
-      assert_equal nil, base_parser.send(:page)
+      assert_nil base_parser.send(:page)
     end
   end
 end
