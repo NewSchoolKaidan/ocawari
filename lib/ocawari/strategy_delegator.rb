@@ -1,19 +1,11 @@
-require "ocawari/strategy/ameblo"
-require "ocawari/strategy/google_plus"
-require "ocawari/strategy/imgur"
-require "ocawari/strategy/instagram"
-require "ocawari/strategy/kaiyou"
-require "ocawari/strategy/keyakizaka46"
-require "ocawari/strategy/line"
-require "ocawari/strategy/logirl"
-require "ocawari/strategy/modelpress"
-require "ocawari/strategy/nana_go_go"
-require "ocawari/strategy/natalie"
-require "ocawari/strategy/smart_flash"
-require "ocawari/strategy/tokyo_idol_net"
-require "ocawari/strategy/tumblr"
-require "ocawari/strategy/twitter"
-require "ocawari/strategy/no_match"
+# Require all strategies
+Dir[
+  File.join(
+    File.expand_path(File.dirname(__FILE__)), 
+    "strategy", 
+    "*"
+  )
+].each { |strategy| require strategy }
 
 module Ocawari
   class StrategyDelegator
