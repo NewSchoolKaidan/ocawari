@@ -2,12 +2,17 @@ module Ocawari
   module Strategy
     class GooglePlus < Parser
 
-      private 
+      private
 
       def parse
-        album_href = page.css("a").find do |a|
-          a.get("href") =~ /photos\/\d+\/albums\/\d+/
-        end.get("href")
+        album_data_div = page.css("div").find do |div|
+          div.get("jsdata") =~ /photos\/\d+\/albums\/\d+/
+        end
+
+        album_href = album_data_div.
+          get("jsdata").
+          split(";").
+          find { |data| data =~ /photos\/\d+\/albums\/\d+/ }
 
         user_id = uri.to_s[/(\d+)/, 1]
         album_id = album_href[/albums\/(\d+)/, 1]
