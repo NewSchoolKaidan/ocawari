@@ -10,11 +10,25 @@ class StrategyDelegatorTest < Minitest::Test
     assert_equal Ocawari::Strategy::Ameblo, strategy
   end
 
+  def test_it_handles_girls_news_posts
+    url = "http://girlsnews.tv/akb/286302"
+    strategy = Ocawari::StrategyDelegator.identify(url)
+
+    assert_equal Ocawari::Strategy::GirlsNews, strategy
+  end
+
   def test_it_handles_google_plus_posts
     url = "https://plus.google.com/105835152133357364264/posts/DnCtSqZEkSh"
     strategy = Ocawari::StrategyDelegator.identify(url)
 
     assert_equal Ocawari::Strategy::GooglePlus, strategy
+  end
+
+  def test_it_handles_hustlepress_posts
+    url = "https://hustlepress.co.jp/keyakizaka46_72/"
+    strategy = Ocawari::StrategyDelegator.identify(url)
+
+    assert_equal Ocawari::Strategy::Hustlepress, strategy
   end
 
   def test_it_handles_imgur_albums
@@ -48,7 +62,7 @@ class StrategyDelegatorTest < Minitest::Test
   def test_it_handles_line_posts
     url = "http://lineblog.me/kimuramisa/archives/5858555.html"
     strategy = Ocawari::StrategyDelegator.identify(url)
-    
+
     assert_equal Ocawari::Strategy::Line, strategy
   end
 
@@ -59,39 +73,59 @@ class StrategyDelegatorTest < Minitest::Test
     assert_equal Ocawari::Strategy::Logirl, strategy
   end
 
+  def test_it_handles_mantan_web_posts
+    url = "http://mantan-web.jp/2017/01/29/20170129dog00m200019000c.html"
+    strategy = Ocawari::StrategyDelegator.identify(url)
+
+    assert_equal Ocawari::Strategy::MantanWeb, strategy
+  end
+
+  def test_it_handles_mensfashion_posts
+    url = "http://mensfashion.cc/interviews/morikanon/"
+    strategy = Ocawari::StrategyDelegator.identify(url)
+
+    assert_equal Ocawari::Strategy::MensFashion, strategy
+  end
+
   def test_it_handles_modelpress_posts
     url = "https://mdpr.jp/news/detail/1647057"
     strategy = Ocawari::StrategyDelegator.identify(url)
-    
+
     assert_equal Ocawari::Strategy::ModelPress, strategy
   end
 
   def test_it_handles_nanagogo_posts
     url = "https://7gogo.jp/kizaki-yuria/4095"
     strategy = Ocawari::StrategyDelegator.identify(url)
-    
+
     assert_equal Ocawari::Strategy::NanaGoGo, strategy
   end
 
   def test_it_handles_natalie_posts
     url = "http://natalie.mu/music/news/213794"
     strategy = Ocawari::StrategyDelegator.identify(url)
-    
+
     assert_equal Ocawari::Strategy::Natalie, strategy
   end
 
   def test_it_handles_smartflash_posts
     url = "http://smart-flash.jp/entame/idol/7288"
     strategy = Ocawari::StrategyDelegator.identify(url)
-    
+
     assert_equal Ocawari::Strategy::SmartFlash, strategy
   end
 
+  def test_it_handles_stereo_sound_online_posts
+    url = "http://www.stereosound.co.jp/column/idollove/article/2017/01/23/53214.html"
+    strategy = Ocawari::StrategyDelegator.identify(url)
+
+    assert_equal Ocawari::Strategy::StereoSound, strategy
+  end
 
   def test_it_handles_tokyo_idol_net_posts
     url = "http://www.tokyoidol.net/?p=4848"
     strategy = Ocawari::StrategyDelegator.identify(url)
-    
+
     assert_equal Ocawari::Strategy::TokyoIdolNet, strategy
   end
 
@@ -127,7 +161,7 @@ class StrategyDelegatorTest < Minitest::Test
   def test_it_returns_no_match_strategy_if_strategy_matches_found
     url = "https://twitter.com"
     strategy = Ocawari::StrategyDelegator.identify(url)
-    
+
     assert_equal Ocawari::Strategy::NoMatch, strategy
   end
 end

@@ -5,7 +5,7 @@ module Ocawari
         @uri = uri
         @page = Oga.parse_html(
           open(uri, {
-              "User-Agent" => "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36"
+              "User-Agent" => Ocawari::WINDOWS_CHROME_USER_AGENT
             }
           ).read
         )
@@ -13,7 +13,7 @@ module Ocawari
       rescue OpenURI::HTTPError
         @page = nil
       end
-      
+
       private
 
       def parse
