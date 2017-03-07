@@ -34,23 +34,13 @@ module Ocawari
     }
 
     def self.identify(url)
-      if RUBY_VERSION >= "2.4.0"
-        STRATEGY_MAP.each do |regex, strategy|
-          if regex.match?(url)
-            return Ocawari::Strategy.const_get(strategy)
-          end
+      STRATEGY_MAP.each do |regex, strategy|
+        if regex.match?(url)
+          return Ocawari::Strategy.const_get(strategy)
         end
-
-        Ocawari::Strategy::NoMatch
-      else
-        STRATEGY_MAP.each do |regex, strategy|
-          if url =~ regex
-            return Ocawari::Strategy.const_get(strategy)
-          end
-        end
-
-        Ocawari::Strategy::NoMatch
       end
+
+      Ocawari::Strategy::NoMatch
     end
   end
 end
