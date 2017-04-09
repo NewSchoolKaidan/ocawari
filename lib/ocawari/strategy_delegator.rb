@@ -25,6 +25,7 @@ module Ocawari
       /7gogo\.jp\/[\W\w]+\/\d+/ => "NanaGoGo",
       /mantan-web\.jp/ => "MantanWeb",
       /natalie\.mu\/music\/news\/\d+/ => "Natalie",
+      /sirabee\.com/ => "Sirabee",
       /smart-flash\.jp\/\w+(\/\w+)?\/\d+/ => "SmartFlash",
       /stereosound\.co\.jp\/column\/idollove/ => "StereoSound",
       /tokyoidol\.net\/\?p=\d+/ => "TokyoIdolNet",
