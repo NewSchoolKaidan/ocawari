@@ -81,10 +81,13 @@ class StrategyDelegatorTest < Minitest::Test
   end
 
   def test_it_handles_modelpress_posts
-    url = "https://mdpr.jp/news/detail/1647057"
-    strategy = Ocawari::StrategyDelegator.identify(url)
-
-    assert_equal Ocawari::Strategy::ModelPress, strategy
+    [
+      "https://mdpr.jp/news/detail/1647057",
+      "https://mdpr.jp/interview/detail/1677179"
+    ].each do |url|
+      strategy = Ocawari::StrategyDelegator.identify(url)
+      assert_equal Ocawari::Strategy::ModelPress, strategy
+    end
   end
 
   def test_it_handles_nanagogo_posts

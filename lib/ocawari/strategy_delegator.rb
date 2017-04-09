@@ -20,7 +20,7 @@ module Ocawari
       /keyakizaka46\.com\/s\/k46o\/diary\/detail/ => "Keyakizaka46",
       /lineblog\.me\/\w+\/archives\/\d+\.html/ => "Line",
       /mensfashion\.cc/ => "MensFashion",
-      /mdpr\.jp\/news\/detail\/\d+/ => "ModelPress",
+      /mdpr\.jp/ => "ModelPress",
       /7gogo\.jp\/[\W\w]+\/\d+/ => "NanaGoGo",
       /mantan-web\.jp/ => "MantanWeb",
       /natalie\.mu\/music\/news\/\d+/ => "Natalie",
