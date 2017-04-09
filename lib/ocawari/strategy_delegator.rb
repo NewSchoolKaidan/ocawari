@@ -28,6 +28,7 @@ module Ocawari
       /stereosound\.co\.jp\/column\/idollove/ => "StereoSound",
       /tokyoidol\.net\/\?p=\d+/ => "TokyoIdolNet",
       /tumblr\.com\/post\/\d+\/?/ => "Tumblr",
+      /tv-tokyo\.co\.jp/ => "TvTokyo",
       /voz48\.xyz\/post\/\d{1,}\/.*/ => "Tumblr",
       /twitter\.com\/\w+\/status\/\d{1,}/ => "Twitter"
     }

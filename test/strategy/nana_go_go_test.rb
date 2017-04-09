@@ -8,7 +8,7 @@ class NanaGoGoTest < Minitest::Test
       strategy = Ocawari::Strategy::NanaGoGo.new(uri)
       images = strategy.execute
 
-      assert_equal Array, results.class
+      assert_equal Array, images.class
     end
   end
 

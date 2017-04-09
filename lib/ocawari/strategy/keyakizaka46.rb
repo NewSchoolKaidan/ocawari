@@ -4,10 +4,7 @@ module Ocawari
       def initialize(uri)
         @uri = uri
         @page = Nokogiri::HTML(
-          open(uri, {
-              "User-Agent" => Ocawari::WINDOWS_CHROME_USER_AGENT
-            }
-          ).read
+          open(uri, {"User-Agent" => Ocawari::WINDOWS_CHROME_USER_AGENT}).read
         )
 
       rescue OpenURI::HTTPError

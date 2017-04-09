@@ -144,6 +144,13 @@ class StrategyDelegatorTest < Minitest::Test
     assert_equal Ocawari::Strategy::Tumblr, strategy
   end
 
+  def test_it_handles_tvtokyo_posts
+    url = "http://www.tv-tokyo.co.jp/yomu/special/951/"
+    strategy = Ocawari::StrategyDelegator.identify(url)
+
+    assert_equal Ocawari::Strategy::TvTokyo, strategy
+  end
+
   def test_it_handles_twitter_posts
     url = "https://twitter.com/Kotone_LTS/status/728252241270857728"
     strategy = Ocawari::StrategyDelegator.identify(url)
