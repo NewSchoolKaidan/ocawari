@@ -16,29 +16,29 @@ module Ocawari
           target_images = page.css("meta[property='og:image']")
         else
           target_images = page.css("img").select do |img|
-            img.get("src") =~ IMAGE_FILTER_EXPRESSION
+            img["src"] =~ IMAGE_FILTER_EXPRESSION
           end
         end
 
         if target_images.any?
           image_urls = target_images.flat_map do |node|
-            [node.get("content"), node.get("src")]
+            [node["content"], node["src"]]
           end.compact
         else
           iframe = page.css("iframe").find do |iframe|
-            iframe.attributes.map(&:value).any? do |value|
-              value =~ /photoset/
+            iframe.attributes.values.any? do |v|
+              v.value =~ /photoset/
             end
           end
 
           return [] unless iframe
 
-          @page = Oga.parse_html(open(iframe.get("src")))
+          @page = Nokogiri::HTML(open(iframe["src"]))
           target_images = page.css("img").select do |img|
-            img.get("src") =~ IMAGE_FILTER_EXPRESSION
+            img["src"] =~ IMAGE_FILTER_EXPRESSION
           end
 
-          image_urls = target_images.map { |img| img.get("src") }
+          image_urls = target_images.map { |img| img["src"] }
         end
 
 

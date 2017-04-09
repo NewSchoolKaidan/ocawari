@@ -4,9 +4,9 @@ module Ocawari
       def initialize(uri)
         if uri.path =~ /\?taken-by=/
           uri.path = uri.path.sub(/\/\?taken-by=.*/, "")
-          @page = Oga.parse_html(open(uri).read)
+          @page = Nokogiri::HTML(open(uri).read)
         else
-          @page = Oga.parse_html(open(uri).read)
+          @page = Nokogiri::HTML(open(uri).read)
         end
       rescue OpenURI::HTTPError
         @page = nil
@@ -16,7 +16,7 @@ module Ocawari
 
       def parse
         meta_node_with_image = page.at_css("meta[property='og:image']")
-        image = meta_node_with_image.get("content")
+        image = meta_node_with_image["content"]
 
         [image]
       end

@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = "~> 2.4"
 
   spec.add_dependency "openssl", ">= 2.0.3"
-  spec.add_dependency "oga", "~> 2.8"
+  spec.add_dependency 'nokogiri', "~> 1.7.a"
   spec.add_dependency 'addressable', '~> 2.4'
   spec.add_dependency "methadone", "~> 1.9", ">= 1.9.2"
 

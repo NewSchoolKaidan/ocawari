@@ -11,13 +11,13 @@ module Ocawari
 
       def parse
         image_links = page.css(CSS_SELECTORS.join(", ")).map do |image|
-          "#{BASE_URL}#{image.get("href")}"
+          "#{BASE_URL}#{image["href"]}"
         end
 
         image_links.map do |link|
-          page = Oga.parse_html(open(link))
+          page = Nokogiri::HTML(open(link))
 
-          url_fragment = page.at_css(".main-photo img.outputthumb").get("src")
+          url_fragment = page.at_css(".main-photo img.outputthumb")["src"]
 
           already_contains_host = /^https?/.match?(url_fragment) && /mdpr\.jp/.match?(url_fragment)
 

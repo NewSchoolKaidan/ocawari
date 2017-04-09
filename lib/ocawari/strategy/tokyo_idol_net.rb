@@ -6,7 +6,7 @@ module Ocawari
 
       def parse
         page.css("img").map do |img|
-          img.get("data-large-file")
+          img["data-large-file"]
         end.compact
       end
     end

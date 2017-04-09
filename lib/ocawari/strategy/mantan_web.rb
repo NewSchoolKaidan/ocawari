@@ -10,7 +10,7 @@ module Ocawari
 
       def parse
         amount_of_images = page.at_css("span.newsbody__photo-num").text.to_i
-        main_image = page.at_css("div.newsbody__img img").get("src")
+        main_image = page.at_css("div.newsbody__img img")["src"]
 
         (1..amount_of_images).to_a.map do |i|
           if i < 10

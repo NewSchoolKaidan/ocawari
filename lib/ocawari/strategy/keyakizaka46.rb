@@ -3,7 +3,7 @@ module Ocawari
     class Keyakizaka46 < Parser
       def initialize(uri)
         @uri = uri
-        @page = Oga.parse_html(
+        @page = Nokogiri::HTML(
           open(uri, {
               "User-Agent" => Ocawari::WINDOWS_CHROME_USER_AGENT
             }
@@ -18,7 +18,7 @@ module Ocawari
 
       def parse
         page.css("div.box-article img").map do |img|
-          File.join("http://www.keyakizaka46.com", img.get("src"))
+          File.join("http://www.keyakizaka46.com", img["src"])
         end
       end
     end

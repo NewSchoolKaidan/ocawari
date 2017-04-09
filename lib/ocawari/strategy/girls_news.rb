@@ -11,7 +11,7 @@ module Ocawari
 
       def parse
         page.css(CSS_SELECTORS.join(", ")).map do |a|
-          File.join("http://www.stereosound.co.jp", a.get("href"))
+          File.join("http://www.stereosound.co.jp", a["href"])
         end
       end
     end

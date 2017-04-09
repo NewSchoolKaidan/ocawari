@@ -13,7 +13,7 @@ module Ocawari
         image_nodes = page.css(CSS_HIERARCHY_SELECTORS.join(", "))
 
         image_nodes.map do |img|
-          image_source = img.get("src")
+          image_source = img["src"]
           case image_source
           when /t\d+_/
             image_source.sub(/t\d+_/, "o")

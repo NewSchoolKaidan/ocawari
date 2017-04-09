@@ -12,7 +12,7 @@ module Ocawari
 
       def parse
         page.css(CSS_SELECTORS.join(", ")).map do |img|
-          img.get("src")
+          img["src"]
         end
       end
     end

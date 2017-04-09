@@ -10,7 +10,7 @@ module Ocawari
 
       def parse
         page.css(CSS_SELECTORS.join(", ")).map do |image|
-          "http://#{image.get("src").sub(/^\/\//, "")}"
+          "http://#{image["src"].sub(/^\/\//, "")}"
         end
       end
     end

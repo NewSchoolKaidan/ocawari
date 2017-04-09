@@ -9,7 +9,7 @@ module Ocawari
           css("div.TalkPostDetail__media img").
           map do |img|
 
-            img.get("src")
+            img["src"]
           end
       end
     end

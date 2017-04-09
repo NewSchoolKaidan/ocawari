@@ -15,7 +15,7 @@ module Ocawari
         image_nodes = page.css(CSS_SELECTOR_HIERARCHY)
 
         image_nodes.map do |img|
-          "#{img.get("src")}:large"
+          "#{img["src"]}:large"
         end.uniq
       end
     end

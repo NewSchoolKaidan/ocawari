@@ -6,11 +6,10 @@ module Ocawari
 
       def parse
         album_data_div = page.css("div").find do |div|
-          div.get("jsdata") =~ /photos\/\d+\/albums\/\d+/
+          div["jsdata"] =~ /photos\/\d+\/albums\/\d+/
         end
 
-        album_href = album_data_div.
-          get("jsdata").
+        album_href = album_data_div["jsdata"].
           split(";").
           find { |data| data =~ /photos\/\d+\/albums\/\d+/ }
 
@@ -24,14 +23,14 @@ module Ocawari
           albumid/#{album_id}
         ).join("/")
 
-        picasa = Oga.parse_xml(
+        picasa = Nokogiri::XML(
           open(Addressable::URI.parse(picasa_url)).read
         )
 
         content_nodes = picasa.xpath("//entry/content")
 
         content_nodes.map do |content|
-          url = content.get("src")
+          url = content["src"]
           url.split("/").insert(-2, "s0").join("/")
         end
       end

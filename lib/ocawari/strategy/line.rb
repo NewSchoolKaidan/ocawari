@@ -14,7 +14,7 @@ module Ocawari
         image_nodes = page.css(CSS_SELECTOR_HIERARCHY)
 
         image_nodes.map do |img|
-          imgname = img.get("src")
+          imgname = img["src"]
 
           case imgname
           when /-s\./

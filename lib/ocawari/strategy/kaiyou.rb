@@ -7,7 +7,7 @@ module Ocawari
       def parse
         all_images = [header_image] + content_images.to_a
         all_images.map do |img|
-          uri = Addressable::URI.parse(img.get("src"))
+          uri = Addressable::URI.parse(img["src"])
 
           "#{uri.scheme}://#{uri.hostname}/press/img/#{uri.path.split("/").last}"
         end

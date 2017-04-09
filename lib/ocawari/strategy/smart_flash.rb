@@ -13,7 +13,7 @@ module Ocawari
 
       def parse
         page.css(CSS_SELECTOR_HIERARCHY).map do |img|
-          img.get("src")
+          img["src"]
         end.select do |url|
           url =~ /data\.smart-flash\.jp/
         end

@@ -10,7 +10,7 @@ module Ocawari
 
       def parse
         page.css(CSS_SELECTORS.join(", ")).map do |image|
-          style = image.get("style")
+          style = image["style"]
           url_fragment = style.
             sub("background-image: url(", "").
             sub(");", "").

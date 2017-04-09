@@ -8,7 +8,7 @@ class ParserTest < Minitest::Test
       url = "https://twitter.com/CP_yuriya_ist/status/732424066410274816"
       base_parser = Parser.new(Addressable::URI.parse(url))
 
-      assert_equal Oga::XML::Document, base_parser.send(:page).class
+      assert_equal Nokogiri::HTML::Document, base_parser.send(:page).class
     end
   end
 

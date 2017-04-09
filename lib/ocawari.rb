@@ -1,8 +1,8 @@
-require "oga"
-require "open-uri"
-require "addressable/uri"
 require "json"
 require "thread"
+require "open-uri"
+require "nokogiri"
+require "addressable/uri"
 
 require "ocawari/version"
 require "ocawari/parser"
