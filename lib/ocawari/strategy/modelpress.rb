@@ -16,10 +16,17 @@ module Ocawari
 
         image_links.map do |link|
           page = Oga.parse_html(open(link))
-          
+
           url_fragment = page.at_css(".main-photo img.outputthumb").get("src")
-          
-          "#{BASE_URL}#{url_fragment}"
+
+          already_contains_host = /^https?/.match?(url_fragment) && /mdpr\.jp/.match?(url_fragment)
+
+
+          if already_contains_host
+            url_fragment
+          else
+            "#{BASE_URL}#{url_fragment}"
+          end
         end
       end
     end
