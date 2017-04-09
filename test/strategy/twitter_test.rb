@@ -23,8 +23,8 @@ class TwitterStrategyTest < Minitest::Test
   end
 
   def test_returns_three_urls_from_post_with_three_photos
-    VCR.use_cassette "twitter/kj-erinyan3" do 
-      uri = Addressable::URI.parse("https://twitter.com/kamiya_erina/status/728432629544984577")
+    VCR.use_cassette "twitter/tsuribit-sakuchin" do 
+      uri = Addressable::URI.parse("https://twitter.com/tsuribit_sakura/status/848898159606505472")
       strategy = Ocawari::Strategy::Twitter.new(uri)
       images = strategy.execute
 
@@ -33,8 +33,8 @@ class TwitterStrategyTest < Minitest::Test
   end
 
   def test_returns_two_urls_from_post_with_two_photos
-    VCR.use_cassette "twitter/kj-yua2" do
-      uri = Addressable::URI.parse("https://twitter.com/yua_yamashita/status/728472195828060160")
+    VCR.use_cassette "twitter/akb48-SAHO2" do
+      uri = Addressable::URI.parse("https://twitter.com/yahho_sahho/status/846748153915236352")
       strategy = Ocawari::Strategy::Twitter.new(uri)
       images = strategy.execute
 

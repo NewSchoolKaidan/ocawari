@@ -18,7 +18,7 @@ class ImgurTest < Minitest::Test
       strategy = Ocawari::Strategy::Imgur.new(uri)
       images = strategy.execute
 
-      assert_equal 9, images.count
+      assert_equal 10, images.count
     end
   end
 

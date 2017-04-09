@@ -26,8 +26,8 @@ module Ocawari
         picasa = Nokogiri::XML(
           open(Addressable::URI.parse(picasa_url)).read
         )
-
-        content_nodes = picasa.xpath("//entry/content")
+                              
+        content_nodes = picasa.css("//entry/content") # not sure why #xpath wouldn't work but #css does
 
         content_nodes.map do |content|
           url = content["src"]

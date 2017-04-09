@@ -4,15 +4,12 @@ module Ocawari
 
       private
 
-      CSS_SELECTOR_HIERARCHY = %w(
-        div.permalink-tweet-container
-        div.tweet
-        div.AdaptiveMedia-photoContainer
-        img
-      ).join(" ")
+      CSS_SELECTORS = [        
+        "div.permalink-tweet-container div.tweet div.AdaptiveMedia-photoContainer img"
+      ]
 
       def parse
-        image_nodes = page.css(CSS_SELECTOR_HIERARCHY)
+        image_nodes = page.css(CSS_SELECTORS.join(" "))
 
         image_nodes.map do |img|
           "#{img["src"]}:large"

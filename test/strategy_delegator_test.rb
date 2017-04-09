@@ -66,13 +66,6 @@ class StrategyDelegatorTest < Minitest::Test
     assert_equal Ocawari::Strategy::Line, strategy
   end
 
-  def test_it_handles_logirl_posts
-    url = "https://logirl.favclip.com/article/detail/5146591566495744"
-    strategy = Ocawari::StrategyDelegator.identify(url)
-
-    assert_equal Ocawari::Strategy::Logirl, strategy
-  end
-
   def test_it_handles_mantan_web_posts
     url = "http://mantan-web.jp/2017/01/29/20170129dog00m200019000c.html"
     strategy = Ocawari::StrategyDelegator.identify(url)
@@ -113,13 +106,6 @@ class StrategyDelegatorTest < Minitest::Test
     strategy = Ocawari::StrategyDelegator.identify(url)
 
     assert_equal Ocawari::Strategy::Sirabee, strategy
-  end
-
-  def test_it_handles_smartflash_posts
-    url = "http://smart-flash.jp/entame/idol/7288"
-    strategy = Ocawari::StrategyDelegator.identify(url)
-
-    assert_equal Ocawari::Strategy::SmartFlash, strategy
   end
 
   def test_it_handles_stereo_sound_online_posts
