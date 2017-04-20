@@ -9,6 +9,13 @@ class StrategyDelegatorTest < Minitest::Test
 
     assert_equal Ocawari::Strategy::Ameblo, strategy
   end
+  
+  def test_it_handles_news_dwango_posts
+    url = "https://news.dwango.jp/2017/01/27/120502/gravure/"
+    strategy = Ocawari::StrategyDelegator.identify(url)
+
+    assert_equal Ocawari::Strategy::NewsDwango, strategy
+  end
 
   def test_it_handles_girls_news_posts
     url = "http://girlsnews.tv/akb/286302"
