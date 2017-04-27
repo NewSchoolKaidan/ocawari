@@ -25,6 +25,7 @@ module Ocawari
       /mantan-web\.jp/ => "MantanWeb",
       /natalie\.mu\/music\/news\/\d+/ => "Natalie",
       /news\.dwango\.jp/ => "NewsDwango",
+      /nikkansports\.com/ => "NikkanSports",
       /sirabee\.com/ => "Sirabee",
       /stereosound\.co\.jp\/column\/idollove/ => "StereoSound",
       /tokyoidol\.net\/\?p=\d+/ => "TokyoIdolNet",
