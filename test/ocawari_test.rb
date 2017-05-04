@@ -22,10 +22,6 @@ class OcawariTest < Minitest::Test
     end
   end
 
-  def test_raises_if_given_argument_other_than_array_or_string
-    assert_raises { Ocawari.parse(4846) }
-  end
-
   def test_returns_one_dimensional_array
     VCR.use_cassette "set_of_urls" do
       urls = %w(
@@ -98,5 +94,25 @@ class OcawariTest < Minitest::Test
 
       assert_equal 9, images.count
     end
+  end
+
+  def test_returns_empty_array_given_an_empty_array
+    assert_equal [], Ocawari.parse([])
+  end
+
+  def test_returns_empty_array_given_an_empty_string
+    assert_equal [], Ocawari.parse("")
+  end
+
+  def test_returns_empty_array_given_a_nil_argument
+    assert_equal [], Ocawari.parse(nil)
+  end
+
+  def test_returns_empty_array_given_invalid_url_scheme_string
+    assert_equal [], Ocawari.parse("AAAAAAAAAASSSSSSSSSSSSSSSAAAAAAAAMMMMMMMMIIIIIIIIIIIIIIINNNNNNNNNN")
+  end
+
+  def test_returns_empty_array_given_an_integer
+    assert_equal [], Ocawari.parse(4846)
   end
 end

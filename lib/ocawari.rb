@@ -15,6 +15,8 @@ module Ocawari
   def self.parse(args)
     case args
     when Array
+      return [] if args.empty?
+
       work_queue = Queue.new
       mutex = Mutex.new
       collected_images = []
@@ -46,11 +48,13 @@ module Ocawari
 
       collected_images.compact
     when String
+      return [] if args.empty?
+
       uri = prepare_uri(args)
       strategy = StrategyDelegator.identify(uri.to_s)
       strategy.new(uri).execute
     else
-      raise StandardError
+      []
     end
   end
 
