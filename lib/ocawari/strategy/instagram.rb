@@ -15,10 +15,29 @@ module Ocawari
       private
 
       def parse
-        meta_node_with_image = page.at_css("meta[property='og:image']")
-        image = meta_node_with_image["content"]
+        script_tag = page.css("script").find { |script| script.text.include?("window._sharedData") }
 
-        [image]
+        graphql_state = script_tag.text.
+          sub("window._sharedData = ", "").
+          sub(/;$/, "").
+          yield_self { |raw| JSON.parse(raw) }
+
+        root = graphql_state.dig( "entry_data", "PostPage", 0, "graphql", "shortcode_media")
+
+        if graph_images_nodes = root.dig("edge_sidecar_to_children", "edges")
+          graph_images_nodes.map do |graph_image| 
+            graph_image.dig("node", "display_url")
+          end
+        else
+          # Largest width & height resolution is 1080x1080
+          # Greater than 750 is an attempt at future proofing
+          root["display_resources"].find do |image|
+            image["config_width"] > 750 &&
+            image["config_height"] > 750
+          end.
+          fetch("src").
+          yield_self { |src| [src].compact }
+        end
       end
     end
   end
