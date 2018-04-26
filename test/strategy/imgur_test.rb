@@ -28,7 +28,7 @@ class ImgurTest < Minitest::Test
       strategy = Ocawari::Strategy::Imgur.new(uri)
       images = strategy.execute
 
-      assert images.all? { |url| url =~ /http:/ }
+      assert images.all? { |url| /http:/.match?(url) }
     end
   end
 end

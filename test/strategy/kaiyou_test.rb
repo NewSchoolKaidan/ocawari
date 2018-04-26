@@ -29,7 +29,7 @@ class KaiyouTest < Minitest::Test
       strategy = Ocawari::Strategy::Kaiyou.new(@uri)
       images = strategy.execute
 
-      assert images.all? { |url| url =~ /press\/img/ }
+      assert images.all? { |url| /press\/img/.match?(url) }
     end
   end
 end

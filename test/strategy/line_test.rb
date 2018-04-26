@@ -30,7 +30,7 @@ class LineStrategyTest < Minitest::Test
 
       all_images_at_max_resolution = images.all? do |url|
         !url.include?("-s.") &&
-        !!(url =~ /\.(jpg|JPEG|jpeg|png|gif)$/)
+        !!(/\.(jpg|JPEG|jpeg|png|gif)$/.match?(url))
       end
 
       assert all_images_at_max_resolution
@@ -49,7 +49,7 @@ class LineStrategyTest < Minitest::Test
       strategy = Ocawari::Strategy::Line.new(uri)
       images = strategy.execute
 
-      any_images_suffixed_with_small = images.any? { |url| url =~ /\/small$/ }
+      any_images_suffixed_with_small = images.any? { |url| /\/small$/.match?(url) }
 
       refute any_images_suffixed_with_small
     end

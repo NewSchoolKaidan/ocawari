@@ -39,7 +39,7 @@ class AmebloStrategyTest < Minitest::Test
 
       images = strategy.execute
 
-      refute images.any? { |image| image =~ /t\d+_/ }
+      refute images.any? { |image| /t\d+_/.match?(image) }
       assert images.all? { |image| image.split("/").last[0] == "o" }
     end
   end
@@ -52,7 +52,7 @@ class AmebloStrategyTest < Minitest::Test
 
       images = strategy.execute
 
-      refute images.any? { |image| image =~ /\?caw=800$/ }
+      refute images.any? { |image| /\?caw=800$/.match?(image) }
     end
   end
 

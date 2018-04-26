@@ -12,11 +12,11 @@ module Ocawari
       ]
 
       def parse
-        if page.to_xml =~ /(#{OPENGRAPH_COMMENTS.join("|")})/
+        if /(#{OPENGRAPH_COMMENTS.join("|")})/.match?(page.to_xml)
           target_images = page.css("meta[property='og:image']")
         else
           target_images = page.css("img").select do |img|
-            img["src"] =~ IMAGE_FILTER_EXPRESSION
+            IMAGE_FILTER_EXPRESSION.match?(img["src"])
           end
         end
 
@@ -27,7 +27,7 @@ module Ocawari
         else
           iframe = page.css("iframe").find do |iframe|
             iframe.attributes.values.any? do |v|
-              v.value =~ /photoset/
+              /photoset/.match?(v.value)
             end
           end
 
@@ -35,7 +35,7 @@ module Ocawari
 
           @page = Nokogiri::HTML(open(iframe["src"]))
           target_images = page.css("img").select do |img|
-            img["src"] =~ IMAGE_FILTER_EXPRESSION
+            IMAGE_FILTER_EXPRESSION.match?(img["src"])
           end
 
           image_urls = target_images.map { |img| img["src"] }
@@ -43,7 +43,7 @@ module Ocawari
 
 
         image_urls.map do |url|
-          if url =~ LOWER_RESOLUTION
+          if LOWER_RESOLUTION.match?(url)
             url.sub(
               LOWER_RESOLUTION, 
               "1280#{File.extname(url)}"

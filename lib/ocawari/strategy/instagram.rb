@@ -2,7 +2,7 @@ module Ocawari
   module Strategy
     class Instagram < Parser
       def initialize(uri)
-        if uri.path =~ /\?taken-by=/
+        if /\?taken-by=/.match?(uri.path)
           uri.path = uri.path.sub(/\/\?taken-by=.*/, "")
           @page = Nokogiri::HTML(open(uri).read)
         else

@@ -19,12 +19,12 @@ module Ocawari
 
       def parse
         album_data_div = page.css("div").find do |div|
-          div["jsdata"] =~ /photos\/\d+\/albums\/\d+/
+          /photos\/\d+\/albums\/\d+/.match?(div["jsdata"])
         end
 
         album_href = album_data_div["jsdata"].
           split(";").
-          find { |data| data =~ /photos\/\d+\/albums\/\d+/ }
+          find { |data| /photos\/\d+\/albums\/\d+/.match?(data) }
 
         user_id = uri.to_s[/(\d+)/, 1]
         album_id = album_href[/albums\/(\d+)/, 1]
