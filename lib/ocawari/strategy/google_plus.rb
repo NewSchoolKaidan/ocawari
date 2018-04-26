@@ -1,8 +1,21 @@
 module Ocawari
   module Strategy
     class GooglePlus < Parser
+      def initialize(uri)
+        if USER_IDENTIFIER.match?(uri.to_s)
+          @uri = Addressable::URI.parse(uri.to_s.sub(USER_IDENTIFIER, ""))
+        else
+          @uri = uri
+        end
+
+        @page = Nokogiri::HTML(open(uri).read)
+      rescue OpenURI::HTTPError
+        @page = nil
+      end
 
       private
+
+      USER_IDENTIFIER = /\/u\/\d+\//
 
       def parse
         album_data_div = page.css("div").find do |div|

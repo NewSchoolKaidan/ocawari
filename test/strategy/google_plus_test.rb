@@ -54,4 +54,16 @@ class GooglePlusTest < Minitest::Test
       assert all_images_are_max_resolution
     end
   end
+
+  def test_returns_images_when_url_includes_user_account_identifier
+    VCR.use_cassette "googleplus/hkt-NACCHAN" do
+      # Needs to remove the /u/1/ part
+      uri = Addressable::URI.parse("https://plus.google.com/u/1/107241677527739013868/posts/QNT8Kg5nj14")
+      strategy = Ocawari::Strategy::GooglePlus.new(uri)
+      images = strategy.execute
+
+
+      assert_equal 1, images.count
+    end
+  end
 end
