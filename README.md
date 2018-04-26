@@ -2,6 +2,9 @@
 
 Fetches the images from supported domains, primarily where images of [Japanese idols](http://newschoolkaidan.com/daes-idol-101/) can be found such as Twitter or Instagram and less commonly social media sites like 755 and Google Plus. Since this was developed for personal scripting use, features are added sporadically and may not be suitable for production.
 
+## Requirements
+
+Ruby 2.5 or higher
 
 ## Installation
 
