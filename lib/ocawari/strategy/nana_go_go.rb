@@ -5,12 +5,13 @@ module Ocawari
       private
 
       def parse
-        page.
-          css("div.TalkPostDetail__media img").
-          map do |img|
+        img = page.css("img").find { |img| img["alt"] == "投稿画像" }
 
-            img["src"]
-          end
+        if target_img = page.at("img[alt='投稿画像']")
+          [target_img["data-src"]]
+        else
+          []
+        end
       end
     end
   end
