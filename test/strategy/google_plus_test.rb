@@ -62,6 +62,14 @@ class GooglePlusTest < Minitest::Test
       strategy = Ocawari::Strategy::GooglePlus.new(uri)
       images = strategy.execute
 
+      assert_equal 1, images.count
+    end
+  end
+
+  def test_returns_images_when_url_includes_user_account_identifier_part2
+    VCR.use_cassette "googleplus/hkt-MIKUUUUUU" do
+      # integrated test
+      images = Ocawari.parse("https://plus.google.com/u/1/108158383330906277526/posts/6bFmhxMgrxr")
 
       assert_equal 1, images.count
     end
