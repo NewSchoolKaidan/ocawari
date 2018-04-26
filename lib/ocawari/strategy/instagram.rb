@@ -29,14 +29,7 @@ module Ocawari
             graph_image.dig("node", "display_url")
           end
         else
-          # Largest width & height resolution is 1080x1080
-          # Greater than 750 is an attempt at future proofing
-          root["display_resources"].find do |image|
-            image["config_width"] > 750 &&
-            image["config_height"] > 750
-          end.
-          fetch("src").
-          yield_self { |src| [src].compact }
+          [root["display_resources"].last["src"]]
         end
       end
     end

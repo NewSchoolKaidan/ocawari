@@ -50,4 +50,16 @@ class InstagramTest < Minitest::Test
       end
     end
   end
+
+  def test_returns_image_at_fullest_resolution
+    # It won't always be 1080x1080
+    VCR.use_cassette "instagram/hikawa-ayame" do
+      uri = Addressable::URI.parse("https://www.instagram.com/p/BhB006lguli/?taken-by=ayame_1108")
+      strategy = Ocawari::Strategy::Instagram.new(uri)
+      images = strategy.execute
+
+      assert_equal 1, images.count
+      assert_includes images, "https://scontent-ort2-2.cdninstagram.com/vp/9a504c6430610d504ec4a5e467fcb650/5B761351/t51.2885-15/e35/29418055_2031324107142168_5323587971704684544_n.jpg"
+    end
+  end
 end
