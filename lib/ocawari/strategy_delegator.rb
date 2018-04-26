@@ -24,7 +24,7 @@ module Ocawari
       /mantan-web\.jp/ => "MantanWeb",
       /blog\.nanabunnonijyuuni\.com/  => "NanaBunNoNijuuni",
       /7gogo\.jp\/[\W\w]+\/\d+/ => "NanaGoGo",
-      /natalie\.mu\/music\/news\/\d+/ => "Natalie",
+      /natalie\.mu/ => "Natalie",
       /news\.dwango\.jp/ => "NewsDwango",
       /nikkansports\.com/ => "NikkanSports",
       /sirabee\.com/ => "Sirabee",
