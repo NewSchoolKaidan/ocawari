@@ -27,17 +27,17 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "openssl", ">= 2.0.3"
-  spec.add_dependency 'nokogiri', "~> 1.7.a"
-  spec.add_dependency 'addressable', '~> 2.4'
-  spec.add_dependency "methadone", "~> 1.9", ">= 1.9.2"
+  spec.add_dependency "openssl", "~> 2.1"
+  spec.add_dependency "nokogiri", "~> 1.8", ">= 1.8.2"
+  spec.add_dependency "addressable", "~> 2.5", ">= 2.5.2"
+  spec.add_dependency "methadone", "~> 1.9", ">= 1.9.5"
 
-  spec.add_development_dependency "bundler", "~> 1.11"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "pry"
-  spec.add_development_dependency 'pry-rescue', '~> 1.4', '~> 1.4.2'
-  spec.add_development_dependency "minitest", "~> 5.0"
-  spec.add_development_dependency "minitest-reporters"
-  spec.add_development_dependency "vcr", "~> 3.0", "~> 3.0.1"
-  spec.add_development_dependency "webmock", "~> 2.0"
+  spec.add_development_dependency "bundler", "~> 1.16", ">= 1.16.1"
+  spec.add_development_dependency "rake", "~> 12.3", ">= 12.3.1"
+  spec.add_development_dependency "pry", "~> 0.11.3"
+  spec.add_development_dependency "pry-rescue", "~> 1.4", ">= 1.4.5"
+  spec.add_development_dependency "minitest", "~> 5.11", ">= 5.11.3"
+  spec.add_development_dependency "minitest-reporters", "~> 1.2"
+  spec.add_development_dependency "vcr", "~> 4.0"
+  spec.add_development_dependency "webmock", "~> 3.3"
 end
