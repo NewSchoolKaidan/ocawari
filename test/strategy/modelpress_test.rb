@@ -50,4 +50,29 @@ class ModelPressTest < Minitest::Test
       assert all_images_contain_only_one_http_scheme, "One or more images contained an image url with multiple http schemes (e.g. https://wwwhttps://www vs https://)"
     end
   end
+
+  def test_returns_largest_resolution_possible
+    # Take advantage of Fastly parameters of being able to resize
+    # images on the fly and make it return the largest image possible
+
+    VCR.use_cassette "modelpress/yukurin-柏木由紀、ランジェリーちら見せ大人の顔 下着事情を語る" do 
+      images = Ocawari.parse("https://mdpr.jp/news/detail/1762389")      
+
+      all_images_have_max_resolution_params = images.all? do |image|
+        /\?width=6000&quality=100/.match?(image)
+      end
+
+      assert images.count == 17
+      assert all_images_have_max_resolution_params
+    end
+  end
+
+  def test_another_but_similiar_url_path
+    # Tests https://mdpr.jp/photo/detail/:id
+    VCR.use_cassette "modelpress/yukurin-柏木由紀、ランジェリーちら見せ大人の顔 下着事情を語るgallery" do 
+      images = Ocawari.parse("https://mdpr.jp/photo/detail/6349467")
+
+      assert images.count == 18
+    end
+  end
 end

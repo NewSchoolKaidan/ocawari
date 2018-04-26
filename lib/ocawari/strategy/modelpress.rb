@@ -4,29 +4,20 @@ module Ocawari
 
       private
 
-      BASE_URL = "https://mdpr.jp".freeze
       CSS_SELECTORS = [
-        "div.content-moki a.photo-detail-link"
+        "div#body-top img.outputthumb",
+        "article.mdpr-article img.outputthumb"
       ]
 
       def parse
-        image_links = page.css(CSS_SELECTORS.join(", ")).map do |image|
-          "#{BASE_URL}#{image["href"]}"
-        end
+        image_links = page.css(CSS_SELECTORS.join(", ")).map { |img| img["src"] }
 
         image_links.map do |link|
-          page = Nokogiri::HTML(open(link))
+          link, _query_params = link.split("?")
 
-          url_fragment = page.at_css(".main-photo img.outputthumb")["src"]
-
-          already_contains_host = /^https?/.match?(url_fragment) && /mdpr\.jp/.match?(url_fragment)
-
-
-          if already_contains_host
-            url_fragment
-          else
-            "#{BASE_URL}#{url_fragment}"
-          end
+          # width is 6000 to make Fastly return
+          # the largest image possible
+          "#{link}?width=6000&quality=100"
         end
       end
     end
