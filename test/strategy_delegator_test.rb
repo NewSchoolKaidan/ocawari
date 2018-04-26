@@ -97,6 +97,13 @@ class StrategyDelegatorTest < Minitest::Test
     end
   end
 
+  def test_it_handles_22_7_blog_posts
+    url = "http://blog.nanabunnonijyuuni.com/s/n227/diary/detail/1112?ima=2559&cd=blog"
+    strategy = Ocawari::StrategyDelegator.identify(url)
+
+    assert_equal Ocawari::Strategy::NanaBunNoNijuuni, strategy
+  end
+
   def test_it_handles_nanagogo_posts
     url = "https://7gogo.jp/kizaki-yuria/4095"
     strategy = Ocawari::StrategyDelegator.identify(url)
