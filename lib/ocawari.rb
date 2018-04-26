@@ -29,7 +29,7 @@ module Ocawari
 
       strategies.each { |taskset| work_queue << taskset }
 
-      workers = (0..4).map do
+      (0..4).map do |_|
         Thread.new do
           begin
             while taskset = work_queue.pop(true)
