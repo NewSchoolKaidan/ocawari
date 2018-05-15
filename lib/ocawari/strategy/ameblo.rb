@@ -27,7 +27,7 @@ module Ocawari
           image_nodes.map do |img|
             case img["src"]
             when /t\d+_/
-              img["src"].sub(/t\d+_/, "o")
+              img["src"].sub(/\/t\d+_/, "/o")
             when /\?caw=800$/
               img["src"].sub(/\?caw=800/, "")
             else
