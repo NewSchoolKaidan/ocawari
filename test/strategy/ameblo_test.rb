@@ -67,4 +67,12 @@ class AmebloStrategyTest < Minitest::Test
       assert images.any?, "The Ameblo strategy should return images for this page"
     end
   end
+
+  def test_returns_images_when_given_query_parameters_in_url
+    VCR.use_cassette "ameblo/kusunoki-mayu" do
+      images = Ocawari.parse("https://ameblo.jp/kusunoki-mayu/entry-12375874022.html?timestamp=1526268775")
+
+      assert images.count, 1
+    end
+  end
 end

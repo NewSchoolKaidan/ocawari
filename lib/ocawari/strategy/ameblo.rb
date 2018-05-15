@@ -25,14 +25,9 @@ module Ocawari
             select { |img| img["src"].include?("/user_images/") }
 
           image_nodes.map do |img|
-            case img["src"]
-            when /t\d+_/
-              img["src"].sub(/\/t\d+_/, "/o")
-            when /\?caw=800$/
-              img["src"].sub(/\?caw=800/, "")
-            else
-              img["src"]
-            end
+            img["src"].
+              sub(/\/t\d+_/, "/o").
+              sub(/\?caw=800/, "")
           end
         else
           # Scrape HTML
