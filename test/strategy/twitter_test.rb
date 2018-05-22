@@ -14,9 +14,7 @@ class TwitterStrategyTest < Minitest::Test
 
   def test_returns_four_urls_from_post_with_four_photos
     VCR.use_cassette "twitter/festive-kotton4" do 
-      uri = Addressable::URI.parse("https://twitter.com/Kotone_LTS/status/728252241270857728")
-      strategy = Ocawari::Strategy::Twitter.new(uri)
-      images = strategy.execute
+      images = Ocawari.parse("https://twitter.com/Kotone_LTS/status/728252241270857728")
       
       assert_equal 4, images.count    
     end
@@ -43,8 +41,8 @@ class TwitterStrategyTest < Minitest::Test
   end
 
   def test_returns_one_url_from_post_with_one_photo
-    VCR.use_cassette "twitter/cp-momoka1" do 
-      uri = Addressable::URI.parse("https://twitter.com/CP_momoka_ist/status/728447804331331584")
+    VCR.use_cassette "twitter/akb-onishi-momoka" do 
+      uri = Addressable::URI.parse("https://twitter.com/momo_0x0_920/status/998522253229740033")
       strategy = Ocawari::Strategy::Twitter.new(uri)
       images = strategy.execute
 
@@ -79,6 +77,18 @@ class TwitterStrategyTest < Minitest::Test
       images = strategy.execute
 
       assert images.all? { |image| image.include?(":large") }
+    end
+  end
+
+  def test_gets_images_when_specifying_user_agent
+    # For some reason, not specifying the user agent
+    # now returns the mobile page for twitter so now
+    # we must use user agents
+
+    VCR.use_cassette "twitter/akb-nozawa-rena" do 
+      images = Ocawari.parse("https://twitter.com/RENAN0ZAWA/status/998712108618465281")
+
+      assert 2, images.count
     end
   end
 end

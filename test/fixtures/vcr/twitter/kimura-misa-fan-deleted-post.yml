@@ -15,49 +15,133 @@ http_interactions:
       - Ruby
   response:
     status:
-      code: 404
-      message: Not Found
+      code: 302
+      message: Found
     headers:
-      Cache-Control:
-      - no-cache
       Content-Length:
-      - '1451'
-      Content-Security-Policy:
-      - default-src 'none'; img-src https://abs.twimg.com https://ssl.google-analytics.com
-        http://www.google-analytics.com; script-src https://abs.twimg.com https://ssl.google-analytics.com
-        https://ajax.googleapis.com http://www.google-analytics.com about:; style-src
-        https://abs.twimg.com https://fonts.googleapis.com 'unsafe-inline'; font-src
-        https://abs.twimg.com https://twitter.com; connect-src 'none'; object-src
-        'none'; media-src 'none'; frame-src 'none'; report-uri https://twitter.com/i/csp_report?a=ORTGK%3D%3D%3D&ro=false
-      Content-Type:
-      - text/html;charset=utf-8
+      - '0'
       Date:
-      - Sun, 09 Apr 2017 03:52:14 GMT
+      - Tue, 22 May 2018 00:28:26 GMT
+      Location:
+      - https://mobile.twitter.com/earth_JL/status/73204362104252825618k
       Server:
       - tsa_b
       Set-Cookie:
-      - guest_id=v1%3A149170993466387023; Domain=.twitter.com; Path=/; Expires=Tue,
-        09-Apr-2019 03:52:14 UTC
-      Status:
-      - 404 Not Found
+      - guest_id=v1%3A152694890684670715; Expires=Thu, 21 May 2020 00:28:26 GMT; Path=/;
+        Domain=.twitter.com
+      - personalization_id="v1_9CvNhjCe4uJOuxX9SdtDWQ=="; Expires=Thu, 21 May 2020
+        00:28:26 GMT; Path=/; Domain=.twitter.com
       Strict-Transport-Security:
       - max-age=631138519
       X-Connection-Hash:
-      - 2719b61d20331daa29faac22460eb70e
+      - c2159a411198e55c9e63fd740915c98c
+      X-Response-Time:
+      - '5'
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 22 May 2018 00:28:26 GMT
+- request:
+    method: get
+    uri: https://mobile.twitter.com/earth_JL/status/73204362104252825618k
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Content-Language:
+      - en
+      Content-Length:
+      - '1309'
+      Content-Security-Policy:
+      - 'default-src ''self''; connect-src ''self''; font-src ''self'' data:; frame-src
+        https://twitter.com https://*.twitter.com https://*.twimg.com twitter: https://www.google.com
+        https://5415703.fls.doubleclick.net https://8122179.fls.doubleclick.net; img-src
+        https://twitter.com https://*.twitter.com https://*.twimg.com https://maps.google.com
+        https://www.google-analytics.com https://stats.g.doubleclick.net https://www.google.com
+        https://ad.doubleclick.net data:; media-src https://*.twitter.com https://*.twimg.com
+        https://*.cdn.vine.co; object-src ''self''; script-src ''unsafe-inline'' ''unsafe-eval''
+        https://*.twitter.com https://*.twimg.com https://www.google.com https://www.google-analytics.com
+        https://stats.g.doubleclick.net; style-src ''unsafe-inline'' https://*.twitter.com
+        https://*.twimg.com; report-uri https://twitter.com/i/csp_report?a=O5SWEZTPOJQWY3A%3D&ro=false;'
+      Content-Type:
+      - text/html;charset=utf-8
+      Date:
+      - Tue, 22 May 2018 00:28:26 GMT
+      Server:
+      - tsa_b
+      Set-Cookie:
+      - d=32; Expires=Wed, 22 May 2019 00:28:26 GMT; Path=/; Domain=.twitter.com;
+        Secure
+      - guest_id=v1%3A152694890697364020; Expires=Thu, 21 May 2020 00:28:26 GMT; Path=/;
+        Domain=.twitter.com
+      - personalization_id="v1_b7NVbeFeDRISIfEw5EjSXQ=="; Expires=Thu, 21 May 2020
+        00:28:26 GMT; Path=/; Domain=.twitter.com
+      Strict-Transport-Security:
+      - max-age=631138519
+      X-Connection-Hash:
+      - a739b46982a06134db805160d4beab85
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
       - SAMEORIGIN
       X-Response-Time:
-      - '6'
+      - '18'
       X-Transaction:
-      - 005c9262002ad565
+      - 000c987e00f46abe
       X-Xss-Protection:
-      - 1; mode=block
+      - 1; mode=block; report=https://twitter.com/i/xss_report
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        PCFET0NUWVBFIGh0bWw+CjxodG1sIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hodG1sIiBsYW5nPSJlbiIgeG1sOmxhbmc9ImVuIj4KICA8aGVhZD4KICAgIDxtZXRhIGh0dHAtZXF1aXY9IkNvbnRlbnQtVHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PXV0Zi04Ij4KICAgIDxtZXRhIGh0dHAtZXF1aXY9IkNvbnRlbnQtTGFuZ3VhZ2UiIGNvbnRlbnQ9ImVuLXVzIj4KICAgIDxtZXRhIG5hbWU9InJvYm90cyIgY29udGVudD0ibm9pbmRleCwgbm9mb2xsb3ciPgogICAgPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xLjAiPgogICAgPHRpdGxlPlR3aXR0ZXIgLyA/PC90aXRsZT4KICAgIDxsaW5rIGhyZWY9Imh0dHBzOi8vYWJzLnR3aW1nLmNvbS9mYXZpY29ucy9mYXZpY29uLmljbyIgcmVsPSJzaG9ydGN1dCBpY29uIiB0eXBlPSJpbWFnZS94LWljb24iPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL2Ficy50d2ltZy5jb20vZXJyb3JzL2Z1bGxzY3JlZW5fZXJyb3JzLTkxZWNjNjUyZTRmYWZhYzUyY2U4YTFhOGExODFhZDI0LmNzcyI+CiAgPC9oZWFkPgogIDxib2R5PgogICAgPGRpdiBjbGFzcz0idG9wYmFyIGpzLXRvcGJhciI+CiAgICAgIDxkaXYgY2xhc3M9Imdsb2JhbC1uYXYiIGRhdGEtc2VjdGlvbi10ZXJtPSJ0b3BfbmF2Ij4KICAgICAgICA8ZGl2IGNsYXNzPSJnbG9iYWwtbmF2LWlubmVyIj4KICAgICAgICAgIDxkaXYgY2xhc3M9ImNvbnRhaW5lciI+CiAgICAgICAgICAgIDx1bCBjbGFzcz0ibmF2IGpzLWdsb2JhbC1hY3Rpb25zIj4KICAgICAgICAgICAgICA8bGkgY2xhc3M9ImhvbWUiPgogICAgICAgICAgICAgICAgPGEgY2xhc3M9Im5hdi1sb2dvLWxpbmsiIGhyZWY9Imh0dHBzOi8vdHdpdHRlci5jb20iPjxpbWcgY2xhc3M9ImJpcmQiIHNyYz0iaHR0cHM6Ly9hYnMudHdpbWcuY29tL2Vycm9ycy9sb2dvMjN4MTkucG5nIiBhbHQ9IlR3aXR0ZXIiPjwvYT4KICAgICAgICAgICAgICA8L2xpPgogICAgICAgICAgICA8L3VsPgogICAgICAgICAgICA8ZGl2IGNsYXNzPSJwdWxsLXJpZ2h0Ij4KICAgICAgICAgICAgICA8dWwgY2xhc3M9Im5hdiBzZWNvbmRhcnktbmF2Ij4KICAgICAgICAgICAgICAgIDxsaT48YSBocmVmPSJodHRwczovL3R3aXR0ZXIuY29tIiBpZD0iaG9tZUxpbmsiPkhvbWUgJnJhcnI7PC9hPjwvbGk+CiAgICAgICAgICAgICAgPC91bD4KICAgICAgICAgICAgPC9kaXY+CiAgICAgICAgICA8L2Rpdj4KICAgICAgICA8L2Rpdj4KICAgICAgPC9kaXY+CiAgICA8L2Rpdj4KICAgIDxkaXYgY2xhc3M9ImJsdWUtc2t5Ij4KICAgICAgPGRpdiBjbGFzcz0iYm9keS1jb250ZW50Ij4KCiAgICAgICAgICA8aDE+U29ycnksIHRoYXQgcGFnZSBkb2VzbuKAmXQgZXhpc3QhPC9oMT4KICAgICAgICAgIDxwPllvdSBjYW4gPGEgaHJlZj0iaHR0cHM6Ly90d2l0dGVyLmNvbS9zZWFyY2gtaG9tZSI+c2VhcmNoIFR3aXR0ZXI8L2E+IHVzaW5nIHRoZSBzZWFyY2ggYm94IGJlbG93IG9yIDxhIGhyZWY9Imh0dHBzOi8vdHdpdHRlci5jb20iPnJldHVybiB0byB0aGUgaG9tZXBhZ2U8L2E+LjwvcD4KICAgICAgICAgIDxmb3JtIGNsYXNzPSJzZWFyY2gtNDA0IiBhY3Rpb249Imh0dHBzOi8vdHdpdHRlci5jb20vc2VhcmNoIiBtZXRob2Q9ImdldCI+CiAgICAgICAgICAgIDxpbnB1dCBpZD0ic2VhcmNoX3EiIG5hbWU9InEiIHR5cGU9InRleHQiIGFyaWEtbGFiZWw9IlNlYXJjaCBxdWVyeSIgcGxhY2Vob2xkZXI9IlNlYXJjaCBmb3IgYSB0b3BpYywgZnVsbCBuYW1lLCBvciBAdXNlcm5hbWUiPgogICAgICAgICAgICA8aW5wdXQgY2xhc3M9ImJ0biIgaWQ9InNlYXJjaF9zdWJtaXQiIHR5cGU9InN1Ym1pdCIgdmFsdWU9IlNlYXJjaCI+CiAgICAgICAgICA8L2Zvcm0+CgogICAgICAgIDxkaXYgY2xhc3M9ImZvb3RlciI+CgogICAgICAgICAgICA8dWwgY2xhc3M9Imxhbmd1YWdlcyI+CgogICAgICAgICAgICAgICAgPGxpPjxhIGRhdGEtbGFuZ3VhZ2U9ImFyIiBocmVmPSIjIj7Yp9mE2LnYsdio2YrYqTwvYT48L2xpPgoKICAgICAgICAgICAgICAgIDxsaT48YSBkYXRhLWxhbmd1YWdlPSJkYSIgaHJlZj0iIyI+RGFuc2s8L2E+PC9saT4KCiAgICAgICAgICAgICAgICA8bGk+PGEgZGF0YS1sYW5ndWFnZT0iZGUiIGhyZWY9IiMiPkRldXRzY2g8L2E+PC9saT4KCiAgICAgICAgICAgICAgICA8bGk+PGEgZGF0YS1sYW5ndWFnZT0iZW4iIGhyZWY9IiMiPkVuZ2xpc2g8L2E+PC9saT4KCiAgICAgICAgICAgICAgICA8bGk+PGEgZGF0YS1sYW5ndWFnZT0iZW4tZ2IiIGhyZWY9IiMiPkVuZ2xpc2ggVUs8L2E+PC9saT4KCiAgICAgICAgICAgICAgICA8bGk+PGEgZGF0YS1sYW5ndWFnZT0iZXMiIGhyZWY9IiMiPkVzcGHDsW9sPC9hPjwvbGk+CgogICAgICAgICAgICAgICAgPGxpPjxhIGRhdGEtbGFuZ3VhZ2U9ImZhIiBocmVmPSIjIj7Zgdin2LHYs9uMPC9hPjwvbGk+CgogICAgICAgICAgICAgICAgPGxpPjxhIGRhdGEtbGFuZ3VhZ2U9ImZpIiBocmVmPSIjIj5TdW9taTwvYT48L2xpPgoKICAgICAgICAgICAgICAgIDxsaT48YSBkYXRhLWxhbmd1YWdlPSJmaWwiIGhyZWY9IiMiPkZpbGlwaW5vPC9hPjwvbGk+CgogICAgICAgICAgICAgICAgPGxpPjxhIGRhdGEtbGFuZ3VhZ2U9ImZyIiBocmVmPSIjIj5GcmFuw6dhaXM8L2E+PC9saT4KCiAgICAgICAgICAgICAgICA8bGk+PGEgZGF0YS1sYW5ndWFnZT0iaGUiIGhyZWY9IiMiPtei1rTXkdaw16jWtNeZ16o8L2E+PC9saT4KCiAgICAgICAgICAgICAgICA8bGk+PGEgZGF0YS1sYW5ndWFnZT0iaGkiIGhyZWY9IiMiPuCkueCkv+CkqOCljeCkpuClgDwvYT48L2xpPgoKICAgICAgICAgICAgICAgIDxsaT48YSBkYXRhLWxhbmd1YWdlPSJodSIgaHJlZj0iIyI+TWFneWFyPC9hPjwvbGk+CgogICAgICAgICAgICAgICAgPGxpPjxhIGRhdGEtbGFuZ3VhZ2U9ImlkIiBocmVmPSIjIj5CYWhhc2EgSW5kb25lc2lhPC9hPjwvbGk+CgogICAgICAgICAgICAgICAgPGxpPjxhIGRhdGEtbGFuZ3VhZ2U9Iml0IiBocmVmPSIjIj5JdGFsaWFubzwvYT48L2xpPgoKICAgICAgICAgICAgICAgIDxsaT48YSBkYXRhLWxhbmd1YWdlPSJqYSIgaHJlZj0iIyI+5pel5pys6KqePC9hPjwvbGk+CgogICAgICAgICAgICAgICAgPGxpPjxhIGRhdGEtbGFuZ3VhZ2U9ImtvIiBocmVmPSIjIj7tlZzqta3slrQ8L2E+PC9saT4KCiAgICAgICAgICAgICAgICA8bGk+PGEgZGF0YS1sYW5ndWFnZT0ibXNhIiBocmVmPSIjIj5CYWhhc2EgTWVsYXl1PC9hPjwvbGk+CgogICAgICAgICAgICAgICAgPGxpPjxhIGRhdGEtbGFuZ3VhZ2U9Im5sIiBocmVmPSIjIj5OZWRlcmxhbmRzPC9hPjwvbGk+CgogICAgICAgICAgICAgICAgPGxpPjxhIGRhdGEtbGFuZ3VhZ2U9Im5vIiBocmVmPSIjIj5Ob3JzazwvYT48L2xpPgoKICAgICAgICAgICAgICAgIDxsaT48YSBkYXRhLWxhbmd1YWdlPSJwbCIgaHJlZj0iIyI+UG9sc2tpPC9hPjwvbGk+CgogICAgICAgICAgICAgICAgPGxpPjxhIGRhdGEtbGFuZ3VhZ2U9InB0IiBocmVmPSIjIj5Qb3J0dWd1w6pzPC9hPjwvbGk+CgogICAgICAgICAgICAgICAgPGxpPjxhIGRhdGEtbGFuZ3VhZ2U9InJ1IiBocmVmPSIjIj7QoNGD0YHRgdC60LjQuTwvYT48L2xpPgoKICAgICAgICAgICAgICAgIDxsaT48YSBkYXRhLWxhbmd1YWdlPSJzdiIgaHJlZj0iIyI+U3ZlbnNrYTwvYT48L2xpPgoKICAgICAgICAgICAgICAgIDxsaT48YSBkYXRhLWxhbmd1YWdlPSJ0aCIgaHJlZj0iIyI+4Lig4Liy4Lip4Liy4LmE4LiX4LiiPC9hPjwvbGk+CgogICAgICAgICAgICAgICAgPGxpPjxhIGRhdGEtbGFuZ3VhZ2U9InRyIiBocmVmPSIjIj5Uw7xya8OnZTwvYT48L2xpPgoKICAgICAgICAgICAgICAgIDxsaT48YSBkYXRhLWxhbmd1YWdlPSJ6aC1jbiIgaHJlZj0iIyI+566A5L2T5Lit5paHPC9hPjwvbGk+CgogICAgICAgICAgICA8L3VsPgoKICAgICAgICAgIDx1bCBjbGFzcz0ibGlua3MiPgogICAgICAgICAgICA8bGkgY2xhc3M9ImZpcnN0Ij4mY29weTsgPHNwYW4gaWQ9ImNvcHlyaWdodC15ZWFyIj48L3NwYW4+IFR3aXR0ZXI8L2xpPgogICAgICAgICAgICA8bGk+PGEgaHJlZj0iaHR0cHM6Ly9hYm91dC50d2l0dGVyLmNvbS8iPkFib3V0PC9hPjwvbGk+CiAgICAgICAgICAgIDxsaT48YSBocmVmPSJodHRwczovL3N1cHBvcnQudHdpdHRlci5jb20vIj5IZWxwPC9hPjwvbGk+CiAgICAgICAgICAgIDxsaT48YSBocmVmPSJodHRwOi8vc3RhdHVzLnR3aXR0ZXIuY29tLyI+U3RhdHVzPC9hPjwvbGk+CiAgICAgICAgICA8L3VsPgogICAgICAgIDwvZGl2PgogICAgICA8L2Rpdj4KICAgIDwvZGl2PgogICAgPHNjcmlwdCBzcmM9Imh0dHBzOi8vYWJzLnR3aW1nLmNvbS9lcnJvcnMvNDA0LTViNzQzNzlhZWY4OGIyNTFhMWJiNjEyMDdmZGYwM2E5LmpzIj48L3NjcmlwdD4KICA8L2JvZHk+CjwvaHRtbD4K
+      string: "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<!DOCTYPE html PUBLIC \"-//WAPFORUM//DTD
+        XHTML Mobile 1.1//EN\" \"http://www.openmobilealliance.org/tech/DTD/xhtml-mobile11.dtd\">\n<html
+        xmlns=\"http://www.w3.org/1999/xhtml\">\n  <head>\n        <meta name=\"HandheldFriendly\"
+        content=\"True\" />\n    <meta name=\"viewport\" content=\"width=device-width,
+        initial-scale=1.0, maximum-scale=1.0, user-scalable=0\"/>\n    \n    <meta
+        name=\"twitter-redirect-url\" content=\"twitter://timeline\"/>\n    <meta
+        name=\"twitter-redirect-srcs\" content=\"{&quot;pwreset-iphone&quot;:true,&quot;android&quot;:true,&quot;email&quot;:true}\"/>\n
+        \   <link href=\"https://ma.twimg.com/twitter-mobile/8f3445bd0e5eb63b939e25a6ff29981d947a4a51/images/favicon.ico\"
+        rel=\"icon\" type=\"image/x-icon\" />\n    <title>Twitter</title>\n      <link
+        href=\"https://ma.twimg.com/twitter-mobile/8f3445bd0e5eb63b939e25a6ff29981d947a4a51/assets/sys.css\"
+        media=\"screen\" rel=\"stylesheet\" type=\"text/css\" />\n    <meta name=\"google-site-verification\"
+        content=\"V0yIS0Ec_o3Ii9KThrCoMCkwTYMMJ_JYx_RSaGhFYvw\" />\n    <meta name=\"viewport\"
+        content=\"width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0\">\n
+        \ </head>\n  <body class=\"images nojs\">\n    <div id=\"container\">\n      \n
+        \     <div id=\"brand_bar\" class=\"chromeless\">\n  <table id=\"top\">\n
+        \   <tr>\n      <td class=\"modal-left\">\n          <a href=\"/\" class=\"brandmark\">\n
+        \           <img src=\"https://ma.twimg.com/twitter-mobile/8f3445bd0e5eb63b939e25a6ff29981d947a4a51/images/larrybird_white.png\"
+        class=\"brandmark_larry\" alt=\"Twitter\" width=\"18\" height=\"15\" />\n
+        \         </a>\n          <span class=\"title\">Twitter</span>\n      </td>\n
+        \     <td class=\"modal-right\">\n      </td>\n    </tr>\n  </table>\n</div>\n\n
+        \     \n      \n      <div id=\"main_content\">\n            <div class=\"system\">\n
+        \     <div class=\"blue\">\n        <table class=\"content\">\n          <tr>\n
+        \           <td>\n              <div class=\"title\">Sorry, that page doesn't
+        exist</div>\n              <div class=\"subtitle\"><a href=\"/\">Back to home</a></div>\n
+        \           </td>\n          </tr>\n        </table>\n      </div>\n    </div>\n\n
+        \     </div>\n        <div id=\"footer\">\n    <div class=\"search-fields\">\n
+        \   <div class=\"title\">\n      <label for=\"q\">Enter a topic, @name, or
+        fullname</label>\n    </div>\n    <form action=\"/search\" class=\"search-input\"
+        method=\"get\">\n    <table>\n      <tr>\n        <td class=\"value\" id=\"search\"><div><input
+        id=\"q\" name=\"q\" type=\"text\" value=\"\"/></div></td>\n        <td class=\"button\">\n
+        \         <input type=\"hidden\" name=\"s\" value=\"typd\" />\n          <input
+        type=\"image\" src=\"https://ma.twimg.com/twitter-mobile/8f3445bd0e5eb63b939e25a6ff29981d947a4a51/images/sprites/magnifying_glass.gif\"
+        alt=\"Search\"/>\n        </td>\n      </tr>\n    </table>\n    </form>\n</div>\n\n
+        \   <div class=\"view-actions\"><a href=\"#top\"> Back to top</a> &middot;
+        <a href=\"/settings/profile_images\">Turn images off</a></div>\n</div>\n\n
+        \   </div>\n      <script src=\"https://ma.twimg.com/twitter-mobile/8f3445bd0e5eb63b939e25a6ff29981d947a4a51/assets/base.js\"
+        type=\"text/javascript\"></script>\n    \n      <img src=\"/i/anonymize?data=%5B%7B%22integration%22%3A%22ga%22%2C%22ref%22%3A%22%22%2C%22mobileMetricsToken%22%3A%22152694890694949565%22%7D%5D\"
+        height=\"0\" width=\"0\" style=\"opacity: 0\">\n\n  </body>\n</html>\n"
     http_version: 
-  recorded_at: Sun, 09 Apr 2017 03:52:14 GMT
-recorded_with: VCR 3.0.3
+  recorded_at: Tue, 22 May 2018 00:28:27 GMT
+recorded_with: VCR 4.0.0
