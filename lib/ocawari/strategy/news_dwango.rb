@@ -7,7 +7,7 @@ module Ocawari
       CSS_SELECTORS = [
         "#js-fancy-slider-sub img"
       ]
-🎉
+
       def parse
         page.css(CSS_SELECTORS.join(",")).map do |img|
           img["src"].sub("/lg_", "/")
