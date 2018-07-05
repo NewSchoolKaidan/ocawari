@@ -9,6 +9,13 @@ class StrategyDelegatorTest < Minitest::Test
 
     assert_equal Ocawari::Strategy::Ameblo, strategy
   end
+
+  def test_it_handles_ameblo_posts
+    url = "https://entameclip.com/topics/118868"
+    strategy = Ocawari::StrategyDelegator.identify(url)
+
+    assert_equal Ocawari::Strategy::EntameClip, strategy
+  end
   
   def test_it_handles_news_dwango_posts
     url = "https://news.dwango.jp/2017/01/27/120502/gravure/"

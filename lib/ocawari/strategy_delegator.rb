@@ -11,6 +11,7 @@ module Ocawari
   class StrategyDelegator
     STRATEGY_MAP = {
       /ameblo\.jp\/[\W\w]+\/entry-\d+\.html/ => "Ameblo",
+      /entameclip\.com/ => "EntameClip",
       /girlsnews\.tv/ => "GirlsNews",
       /plus\.google\.com(\/u\/\d+)?\/\d+\/posts\/\w+/ => "GooglePlus",
       /hustlepress\.co\.jp/ => "Hustlepress",
