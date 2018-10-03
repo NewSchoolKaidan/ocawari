@@ -132,6 +132,13 @@ class StrategyDelegatorTest < Minitest::Test
     assert_equal Ocawari::Strategy::NikkanSports, strategy
   end
 
+  def test_it_handles_okmusicjp_posts
+    url = "https://okmusic.jp/news/294124"
+    strategy = Ocawari::StrategyDelegator.identify(url)
+
+    assert_equal Ocawari::Strategy::OkMusicJP, strategy
+  end
+
   def test_it_handles_sirabee_posts
     url = "http://sirabee.com/2017/03/05/20161076169/"
     strategy = Ocawari::StrategyDelegator.identify(url)
