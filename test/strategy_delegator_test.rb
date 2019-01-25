@@ -196,6 +196,13 @@ class StrategyDelegatorTest < Minitest::Test
     assert_equal Ocawari::Strategy::Twitter, strategy
   end
 
+  def test_it_handles_gendai_business_posts
+    url = "https://gendai.ismedia.jp/articles/-/59482"
+    strategy = Ocawari::StrategyDelegator.identify(url)
+
+    assert_equal Ocawari::Strategy::GendaiBusiness, strategy
+  end
+
   def test_it_returns_no_match_strategy_if_strategy_matches_found
     url = "https://twitter.com"
     strategy = Ocawari::StrategyDelegator.identify(url)

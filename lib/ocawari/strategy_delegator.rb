@@ -12,6 +12,7 @@ module Ocawari
     STRATEGY_MAP = {
       /ameblo\.jp\/[\W\w]+\/entry-\d+\.html/ => "Ameblo",
       /entameclip\.com/ => "EntameClip",
+      /gendai\.ismedia\.jp/ => "GendaiBusiness",
       /girlsnews\.tv/ => "GirlsNews",
       /plus\.google\.com(\/u\/\d+)?\/\d+\/posts\/\w+/ => "GooglePlus",
       /hustlepress\.co\.jp/ => "Hustlepress",
