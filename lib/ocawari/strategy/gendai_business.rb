@@ -10,7 +10,11 @@ module Ocawari
 
           # Add header image
           if pagination == 1
-            acc << File.join("https://gendai.ismedia.jp", page.at("div.articleHeader img")["src"])
+            resource = page.at("div.articleFirstImage")["style"].
+              sub("background-image:url('", "").
+              sub("');", "")
+            
+            acc << File.join("https://gendai.ismedia.jp", resource)
           end
 
           page.css("img.main-image").each do |mainimage|
